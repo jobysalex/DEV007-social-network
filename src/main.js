@@ -22,7 +22,7 @@ export const onNavigate = (pathname) => {
     rootDiv.removeChild(rootDiv.firstChild);
   }
 
-  rootDiv.appendChild(routes[pathname]());
+  rootDiv.appendChild(routes[pathname](onNavigate));
 };
 
 const component = routes[window.location.pathname];
@@ -31,7 +31,7 @@ window.onpopstate = () => {
   while (rootDiv.firstChild) {
     rootDiv.removeChild(rootDiv.firstChild);
   }
-  rootDiv.appendChild(routes[window.location.pathname]());
+  rootDiv.appendChild(routes[window.location.pathname](onNavigate));
 };
 
-rootDiv.appendChild(component());
+rootDiv.appendChild(component(onNavigate));
