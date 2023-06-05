@@ -3,7 +3,7 @@ import { onNavigate } from '../main.js';
 export const Home = () => {
   const HomeDiv = document.createElement('div');
 
-  const viewHome =  `
+  const viewHome = `
   <div><img src="./img/Vegetales.jpg" class="imgvegetales" alt="imgVegetales - Cocinemos Juntos "></div>
   <img class="logo" src="./img/Logo.png">
   <section class="Home">
