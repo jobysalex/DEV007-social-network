@@ -1,8 +1,11 @@
-import { onNavigate } from '../main.js';
+
+
 import { createUserWithEmailAndPassword } from "./Firebase.js";
 
-export const Register = () => {
-  const HomeDiv = document.createElement ('div');
+
+
+export const Register = (onNavigate) => {
+  const HomeDiv = document.createElement('div');
 
   const viewRegister = `
     <div><img src="./img/tarta.jpg" class="imgTarta" alt="imgTarta - Cocinemos Juntos "></div>
@@ -23,14 +26,13 @@ export const Register = () => {
   // HomeDiv.textContent = 'Bienvenida al registro';
   const buttonPosting = document.createElement('button');
   buttonPosting.textContent = 'Registrarse';
-  buttonPosting.addEventListener('click', () => onNavigate('/Posting'));
+  buttonPosting.addEventListener('click', () => onNavigate('/posting'));
   HomeDiv.appendChild(buttonPosting);
 
-  const buttonHome = document.createElement ('button');
+  const buttonHome = document.createElement('button');
   buttonHome.textContent = 'Regresar al home';
   buttonHome.addEventListener('click', () => onNavigate('/')); //esto es para que vuelva al home
   HomeDiv.appendChild(buttonHome);
 
   return HomeDiv;
-
 };
