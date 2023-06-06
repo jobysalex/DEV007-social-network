@@ -1,6 +1,6 @@
-import { onNavigate } from '../main.js';
+//import { onNavigate } from '../main.js';
 
-export const Login = () => {
+export const Login = (onNavigate) => {
   const HomeDiv = document.createElement('div');
 
   const viewLogin = `
@@ -21,7 +21,7 @@ export const Login = () => {
 
   const buttonPosting = document.createElement('button');
   buttonPosting.textContent = 'Ingresar';
-  buttonPosting.addEventListener('click', () => onNavigate('/Posting'));
+  buttonPosting.addEventListener('click', () => onNavigate('/posting'));
   HomeDiv.appendChild(buttonPosting);
 
   const buttonHome = document.createElement('button');

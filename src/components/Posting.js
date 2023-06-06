@@ -1,10 +1,10 @@
-import { onNavigate } from '../main.js';
+//import { onNavigate } from '../main.js';
 
-export const Posting = () => {
+export const Posting = (onNavigate) => {
   const HomeDiv = document.createElement('div');
 
   const viewPosting = `
-      <div><img src="./img/waffles.jpg" class="Wafles" alt="wafles - Cocinemos Juntos "></div>
+      <div><img src="./img/EnConstruccion.jpg" class="Wafles" alt="wafles - Cocinemos Juntos "></div>
       <img class="logo" src="./img/Logo.png">
       <section class="newRegister">
         <h2> Página en Construcción</h2>
