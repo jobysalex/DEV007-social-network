@@ -1,4 +1,5 @@
 import { onNavigate } from '../main.js';
+import { createUserWithEmailAndPassword } from "./Firebase.js";
 
 export const Register = () => {
   const HomeDiv = document.createElement ('div');
