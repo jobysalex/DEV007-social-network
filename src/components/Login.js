@@ -1,3 +1,4 @@
+import { signInWithEmailAndPassword } from "firebase/auth";
 export const Login = (onNavigate) => {
   const HomeDiv = document.createElement('div');
 
@@ -7,13 +8,14 @@ export const Login = (onNavigate) => {
   <section class="container">
     <h2>Inicia sesión</h2>
     <label> Ingresa tu correo </label>
-    <input type="email" class="email" placeholder="ejemplo@gmail.com" />
+    <input type="email" class="email" id="input-email"placeholder="ejemplo@gmail.com" />
     <label> Ingresa tu contraseña </label>
-    <input type="password" Class="password" placeholder="xxxxx" />
+    <input type="password" Class="password" id="input-password" placeholder="xxxxx" />
   </section>
   `;
 
   HomeDiv.innerHTML = viewLogin;
+
 
   const buttonPosting = document.createElement('button');
   buttonPosting.classList.add('buttonsPrincipals');
@@ -26,6 +28,20 @@ export const Login = (onNavigate) => {
   buttonHome.textContent = 'Regresar al Home';
   buttonHome.addEventListener('click', () => onNavigate('/'));
   HomeDiv.appendChild(buttonHome);
+
+  const inputEmail = HomeDiv.querySelector('#input-email');
+  const inputPassword = HomeDiv.querySelector('#input-password');
+
+  buttonPosting.addEventListener('click', (e) => {
+    e.preventDefault();
+    signInWithEmailAndPassword(
+      inputEmail.value,
+      inputPassword.value
+    ) .them(() => {
+      onNavigate('/');
+    });
+  });
+
 
   return (HomeDiv);
 };
