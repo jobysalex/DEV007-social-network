@@ -16,12 +16,11 @@ export const Login = (onNavigate) => {
 
   HomeDiv.innerHTML = viewLogin;
 
-
-  const buttonPosting = document.createElement('button');
-  buttonPosting.classList.add('buttonsPrincipals');
-  buttonPosting.textContent = 'Ingresar';
-  buttonPosting.addEventListener('click', () => onNavigate('/posting'));
-  HomeDiv.appendChild(buttonPosting);
+  const buttonRecipe = document.createElement('button');
+  buttonRecipe.classList.add('buttonsPrincipals');
+  buttonRecipe.textContent = 'Ingresar';
+  buttonRecipe.addEventListener('click', () => onNavigate('/recipe'));
+  HomeDiv.appendChild(buttonRecipe);
 
   const buttonHome = document.createElement('button');
   buttonHome.classList.add('buttonsPrincipals');
@@ -32,12 +31,12 @@ export const Login = (onNavigate) => {
   const inputEmail = HomeDiv.querySelector('#input-email');
   const inputPassword = HomeDiv.querySelector('#input-password');
 
-  buttonPosting.addEventListener('click', (e) => {
+  buttonRecipe.addEventListener('click', (e) => {
     e.preventDefault();
     signInWithEmailAndPassword(
       inputEmail.value,
       inputPassword.value
-    ) .them(() => {
+    ).them(() => {
       onNavigate('/');
     });
   });
