@@ -3,35 +3,51 @@ export const Recipe = (onNavigate) => {
 
   // deberia hacer click en la el titulo de la receta y llebarle a ReadRecipe.js
   const viewRecipe = `
-        <div><img src="./img/Espaguetis.png" class="imgMain" alt="Espaguetis - Cocinemos Juntos "></div>
-        <img class="logo3" src="./img/Logo3.png">
-        <section class="container">
-        <p>¡Comparte tus mejores creaciones culinarias con el mundo!</p>
+  <div><img src = "./img/Espaguetis.png" class = "imgMain" alt = "Espaguetis - Cocinemos Juntos "></div>
+  <section class = "container">
+    <img class = "logo3" src = "./img/Logo3.png">
+    <div class = "div3">
+      <p class = "pDiv">Descubre deliciosas recetas! ¡Haz clic y disfruta!</p>
+        <a href = "ReadRecipe.js"><input type = "button" class = "titleRecipe" value = "Pancakes Caseros"></a> 
+        <a href = "#"><input type = "button" class = "titleRecipe" value = "Wafles de Avena"></a> 
+        <a href = "#"><input type = "button" class = "titleRecipe" value = "Omelet de Espinaca"></a> 
+        <a href = "#"><input type = "button" class = "titleRecipe" value = "Gelatina de Frutas"></a> 
+        <a href = "#"><input type = "button" class = "titleRecipe" value = "Pollo Agridulce"></a> 
+        <a href = "#"><input type = "button" class = "titleRecipe" value = "Chuleta Valluna"></a> 
+    </div>    
+  </section>
+  `;
 
-        <p>Descubre deliciosas recetas! ¡Haz clic y disfruta!</p>
-        <a href#> Pancakes Caseros </a>
-        <a href#> Wafles de Avena </a> 
-        <a href#> Omelet de espinaca </a>
-        <a href#> Gelatina de frutas </a>
-        <a href#> Pollo Agridulce </a>
-        <a href#> Chuleta Valluna </a>
-        </section>
-        `;
   HomeDiv.innerHTML = viewRecipe;
 
-  const PostingDiv = document.createElement('div');
+  const section2 = document.createElement('section');
+  section2.classList.add('section2');
+
+  const pPosting = document.createElement('p');
+  pPosting.classList.add('pDiv');
+  pPosting.textContent = '¡Comparte tus mejores creaciones culinarias con el mundo!';
+  
+  const buttonReadRecipe = document.createElement('button');
+  buttonReadRecipe.classList.add("buttonsPrincipals");
+  buttonReadRecipe.textContent = 'Ir a las Recetas';
+  buttonReadRecipe.addEventListener('click', () => onNavigate('/readRecipe'));
+
   const buttonPosting = document.createElement('button');
   buttonPosting.classList.add('buttonsPrincipals');
-  buttonPosting.textContent = 'Publicar';
+  buttonPosting.textContent = 'Publicar Tu Receta';
   buttonPosting.addEventListener('click', () => onNavigate('/posting'));
-  HomeDiv.appendChild(buttonPosting);
-  PostingDiv.appendChild(HomeDiv);
 
   const buttonHome = document.createElement('button');
   buttonHome.classList.add('buttonsPrincipals');
   buttonHome.textContent = 'Regresar al Home';
   buttonHome.addEventListener('click', () => onNavigate('/'));
-  HomeDiv.appendChild(buttonHome);
+  
+  HomeDiv.appendChild(section2);
+  section2.appendChild(pPosting);
+  section2.appendChild(buttonReadRecipe);
+  section2.appendChild(buttonPosting);
+  section2.appendChild(buttonHome);
+
 
   return (HomeDiv);
 };
