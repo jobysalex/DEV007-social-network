@@ -1,10 +1,10 @@
-*{
+* {
   margin: 0;
   padding: 0;
 }
 body {
-  background-color:  #F7EDE9;
-  font-family: 'Times New Roman', sans-serif;
+  background-color: #f7ede9;
+  font-family: "Times New Roman", sans-serif;
   display: grid;
 }
 
@@ -12,48 +12,47 @@ body {
   width: 100%;
 }
 
-.logo { 
+.logo {
   width: 30%;
   transform: translate(118%);
   margin-top: 30px;
 }
 
-.logo3 { 
+.logo3 {
   width: 90%;
   transform: translate(8%);
   margin-top: 20px;
 }
 
-header{ 
+header {
   grid-column: 1/2;
   grid-row: 1;
 }
 
-section { 
+section {
   display: grid;
 }
 
-h1 { 
+h1 {
   grid-column: 2/12;
-  font-family: 'Times New Roman', sans-serif;
+  font-family: "Times New Roman", sans-serif;
   font-size: 2.5em;
   margin-top: 10px;
   color: #443728;
   text-align: center;
 }
 
-h2 { 
+h2 {
   grid-column: 2/12;
-  font-family: 'Times New Roman', sans-serif;
+  font-family: "Times New Roman", sans-serif;
   font-size: 2em;
   margin-top: 10px;
   color: #443728;
   text-align: center;
   margin-bottom: 40px;
-  
 }
 
-label { 
+label {
   grid-column: 2/12;
   font-size: 1.5em;
   margin-top: 8px;
@@ -63,8 +62,8 @@ label {
   font-weight: bold;
   font-style: italic;
 }
- 
-input { 
+
+input {
   grid-column: 2/12;
   border-radius: 5px;
   height: 4vh;
@@ -72,16 +71,15 @@ input {
   width: 300px;
   text-align: center;
   margin-left: 40px;
-  color:#443728;
+  color: #443728;
   font-size: 1.3em;
-  font-family: 'Times New Roman', sans-serif;
-  
+  font-family: "Times New Roman", sans-serif;
 }
 
 input::placeholder {
-  color:rgb(179, 176, 176);
+  color: rgb(179, 176, 176);
 }
-p { 
+p {
   grid-column: 4/10;
   font-size: 1.8em;
   color: #443728;
@@ -100,26 +98,54 @@ p {
   margin: 30px 10px 10px 100px;
   font-size: 1.3em;
   color: #443728;
-}  
+}
 
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: normal;
+  src: url('Font/Roboto-Medium.ttf') format('ttf'),
+       
+}
+
+.googleSignIn {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  font-size: 1rem;
+  background-color: white;
+  width: 18rem;
+  height: 2.75rem;
+  font-family: 'Roboto', sans-serif;
+  border: solid 0.0625rem;
+  border-color: white;
+  color: #000;
+  border-radius: 2%;
+  letter-spacing: 0.0625rem;
+}
+
+
+.GoogleIcon {
+  width: 30px;
+}
 
 /* Tablets, Ipads (portrait)
 @media (min-width: 768px) and (max-width: 1024px) { */
 
 /* Inicio Laptops, Desktops*/
-@media (min-width: 1025px) and (max-width: 1280px) { 
-  *{
+@media (min-width: 1025px) and (max-width: 1280px) {
+  * {
     margin: 0;
     padding: 0;
   }
   body {
-    background-color:  #F7EDE9;
-    font-family: 'Times New Roman', sans-serif;
+    background-color: #f7ede9;
+    font-family: "Times New Roman", sans-serif;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
   }
-  
+
   .imgMain {
     width: 50%;
     flex-direction: column;
@@ -127,49 +153,47 @@ p {
     display: flex;
     float: left;
     margin-top: 100px;
-    
   }
-  
-  .logo { 
+
+  .logo {
     width: 15%;
     transform: translate(115%);
     margin-top: 100px;
   }
 
-  .logo3 { 
+  .logo3 {
     width: 500px;
     transform: translate(15%);
     margin-top: 80px;
   }
-  
-  header{ 
+
+  header {
     display: flex;
   }
 
-  section { 
-    display:flex;
+  section {
+    display: flex;
     width: 50%;
     flex-direction: column;
   }
-  
-  h1 { 
+
+  h1 {
     grid-column: 2/12;
-    font-family: 'Times New Roman', sans-serif;
+    font-family: "Times New Roman", sans-serif;
     font-size: 2.5em;
     margin-top: 10px;
     color: #443728;
     text-align: center;
   }
-  
-  h2 { 
+
+  h2 {
     grid-column: 2/12;
-    font-family: 'Times New Roman', sans-serif;
-    font-size: 2.0em;
+    font-family: "Times New Roman", sans-serif;
+    font-size: 2em;
     margin-top: 5px;
     color: #443728;
     text-align: center;
     margin-bottom: 10px;
-    
   }
   .buttonsPrincipals {
     width: 200px;
@@ -181,9 +205,9 @@ p {
     margin: 30px 5px px 300px;
     font-size: 1.3em;
     color: #443728;
-  } 
+  }
 
-  label { 
+  label {
     grid-column: 2/12;
     font-size: 1.5em;
     margin-top: 8px;
@@ -195,7 +219,7 @@ p {
     font-style: italic;
   }
 
-  input { 
+  input {
     border-radius: 5px;
     height: 4vh;
     background-color: rgba(251, 253, 253, 0.709);
@@ -203,14 +227,12 @@ p {
     text-align: left;
     padding: 4px;
     margin-left: 100px;
-    color:#443728;
+    color: #443728;
     font-size: 1.3em;
-    font-family: 'Times New Roman', sans-serif;
-    
-  }
-  
-  input::placeholder {
-    color:rgb(179, 176, 176);
+    font-family: "Times New Roman", sans-serif;
   }
 
+  input::placeholder {
+    color: rgb(179, 176, 176);
+  }
 }
