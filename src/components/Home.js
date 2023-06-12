@@ -2,30 +2,40 @@ export const Home = (onNavigate) => {
   const HomeDiv = document.createElement('div');
 
   const viewHome = `
-  <div><img src="./img/Vegetales.jpg" class="imgMain" alt="Imagen de Vegetales - Cocinemos Juntos "></div>
-  <img class="logo" src="./img/Logo.png">
-  <section class="container">
+
+  <div><img src = "./img/Vegetales.jpg" class = "imgMain" alt = "Imagen de Vegetales - Cocinemos Juntos "></div>
+  <section class = "container">
+    <img class = "logo" src = "./img/Logo.png">
     <h1>¿Cocinamos Juntos?</h1>
-    <p>¡Encuentra, comparte y crea deliciosas recetas mientras haces amigos y disfrutas de una experiencia culinaria única!
-    </p>
+    <p>¡Encuentra, comparte y crea deliciosas recetas mientras haces amigos y disfrutas de una experiencia culinaria única!</p>
   </section>
   `;
   HomeDiv.innerHTML = viewHome;
 
+  const section2 = document.createElement('section');
+  section2.classList.add('section2');
+
   const buttonRegister = document.createElement('button');
   buttonRegister.classList.add('buttonsPrincipals');
+  buttonRegister.textContent = 'Registrate';
+  buttonRegister.addEventListener('click', () => onNavigate('/register'));
+
 
   const buttonLogin = document.createElement('button');
   buttonLogin.classList.add('buttonsPrincipals');
-  buttonRegister.textContent = 'Registrate';
-
   buttonLogin.textContent = 'Inicia sesión';
-
-  buttonRegister.addEventListener('click', () => onNavigate('/register'));
   buttonLogin.addEventListener('click', () => onNavigate('/login'));
 
-  HomeDiv.appendChild(buttonRegister);
-  HomeDiv.appendChild(buttonLogin);
+  const buttonRecipe = document.createElement('button');
+  buttonRecipe.classList.add("buttonsPrincipals");
+  buttonRecipe.textContent = 'Deliciosas Recetas';
+  buttonRecipe.addEventListener('click', () => onNavigate('/recipe'));
+
+
+  HomeDiv.appendChild(section2);
+  section2.appendChild(buttonRegister);
+  section2.appendChild(buttonLogin);
+  section2.appendChild(buttonRecipe);
 
   return HomeDiv;
 };

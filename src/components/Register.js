@@ -6,6 +6,7 @@ export const Register = (onNavigate) => {
   const HomeDiv = document.createElement('div');
 
   const viewRegister = `
+
     <div><img src="./img/tarta.jpg" class="imgMain" alt="Imagen de Tarta - Cocinemos Juntos "></div>
     <img class="logo3" src="./img/Logo3.png">
     <section class="container">
@@ -20,12 +21,33 @@ export const Register = (onNavigate) => {
       <span id="registerGoogle">Registrate con Google</span>
       </button>
     `;
+
+  <div><img src = "./img/tarta.jpg" class = "imgMain" alt = "imgen de Tarta - Cocinemos Juntos "></div>
+  <section class = "container">
+    <img class = "logo3" src = "./img/Logo3.png">
+    <h2>Registrarse</h2>
+    <label> Ingresa tu correo </label>
+    <input type = "email" class = "email" id = "email2" placeholder = "ejemplo@gmail.com " />
+    <label> Ingresa tu Contraseña </label>
+    <input type = "password" class = "password" id = "password2" placeholder = "xxxxxxx" />
+  </section>
+  `;
+
+
   HomeDiv.innerHTML = viewRegister;
+  const section2 = document.createElement('section');
+  section2.classList.add('section2');
+
 
   // HomeDiv.textContent = 'Bienvenida al registro';
   const buttonLogin = document.createElement('button');
   buttonLogin.classList.add('buttonsPrincipals');
   buttonLogin.textContent = 'Registrarse';
+
+  const buttonLogin = document.createElement("button");
+  buttonLogin.classList.add("buttonsPrincipals");
+  buttonLogin.textContent = "Registrarse";
+
   // buttonLogin.addEventListener('click', () => onNavigate('/login'));
   buttonLogin.onclick = function () {
     const inputEmail = HomeDiv.querySelector('#email2');
@@ -38,6 +60,7 @@ export const Register = (onNavigate) => {
       })
       .catch((err) => console.log(err));
   };
+
 
   HomeDiv.appendChild(buttonLogin);
 
@@ -52,6 +75,16 @@ export const Register = (onNavigate) => {
   buttonHome.textContent = 'Regresar al home';
   buttonHome.addEventListener('click', () => onNavigate('/')); // esto es para que vuelva al home
   HomeDiv.appendChild(buttonHome);
+
+
+  const buttonHome = document.createElement("button");
+  buttonHome.classList.add("buttonsPrincipals");
+  buttonHome.textContent = "Regresar al home";
+  buttonHome.addEventListener("click", () => onNavigate("/")); //esto es para que vuelva al home
+
+  HomeDiv.appendChild(section2);
+  section2.appendChild(buttonLogin);
+  section2.appendChild(buttonHome);
 
   return HomeDiv;
 };
