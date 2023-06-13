@@ -1,7 +1,7 @@
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { iniciarConGoogle, iniciarsesion } from '../Firebase.js';
+
 export const Login = (onNavigate) => {
   const HomeDiv = document.createElement('div');
-
   const viewLogin = `
   <div><img src = "./img/Waffles.jpg" class = "imgMain" alt = "imgen de Waffles - Cocinemos Juntos "></div>
   <section class = "container">
@@ -28,22 +28,37 @@ export const Login = (onNavigate) => {
   buttonHome.textContent = 'Regresar al Home';
   buttonHome.addEventListener('click', () => onNavigate('/'));
 
+  const buttonGoogle = document.createElement('button');
+  buttonGoogle.classList.add('googleSignIn');
+  buttonGoogle.textContent = 'Iniciar Seción con Google';
+
   const inputEmail = HomeDiv.querySelector('#input-email');
   const inputPassword = HomeDiv.querySelector('#input-password');
 
-  HomeDiv.appendChild(section2);    
+  HomeDiv.appendChild(section2);
   section2.appendChild(buttonRecipe);
   section2.appendChild(buttonHome);
+  section2.appendChild(buttonGoogle);
 
   buttonRecipe.addEventListener('click', (e) => {
     e.preventDefault();
-    signInWithEmailAndPassword(
-      inputEmail.value,
-      inputPassword.value
-    ).them(() => {
-      onNavigate('/');
-    });
-  });
+    iniciarsesion(inputEmail.value, inputPassword.value)
+      .then(() => {
+        onNavigate('/recipe');
+      })
+      .catch(() => {
+        alert('Usuario o contraseña no valido');
+        onNavigate('/');
+      });
 
-  return (HomeDiv);
+    const btnGoogle = HomeDiv.querySelector('.googleSignIn');
+    btnGoogle.addEventListener('click', (e) => {
+      e.preventDefault();
+      iniciarConGoogle().then(() => {
+        onNavigate('/recipe');
+      });
+    });
+
+    return HomeDiv;
+  });
 };

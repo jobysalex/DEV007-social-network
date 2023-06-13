@@ -1,6 +1,8 @@
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../Firebase";
-import { crearUsuarioConCorreoYContraseña } from "../lib";
+import {
+  crearUsuarioConCorreoYContraseña,
+  iniciarConGoogle,
+} from '../Firebase.js';
+
 export const Register = (onNavigate) => {
   const HomeDiv = document.createElement("div");
 
@@ -14,6 +16,7 @@ export const Register = (onNavigate) => {
     <label> Ingresa tu Contraseña </label>
     <input type = "password" class = "password" id = "password2" placeholder = "xxxxxxx" />
   </section>
+     
   `;
 
   HomeDiv.innerHTML = viewRegister;
@@ -35,19 +38,29 @@ export const Register = (onNavigate) => {
       })
       .catch((err) => console.log(err));
   };
+  const buttonGoogle = document.createElement('button');
+  buttonGoogle.classList.add('googleSignIn');
+  buttonGoogle.textContent = 'Registrarse con Google';
 
   const buttonHome = document.createElement("button");
   buttonHome.classList.add("buttonsPrincipals");
   buttonHome.textContent = "Regresar al home";
-  buttonHome.addEventListener("click", () => onNavigate("/")); //esto es para que vuelva al home
+  buttonHome.addEventListener("click", () => onNavigate("/")); // esto es para que vuelva al home
+
+  buttonGoogle.addEventListener('click', (e) => {
+    e.preventDefault();
+    iniciarConGoogle(
+      inputEmail.value,
+      inputPassword.value,
+    ).them(() => {
+      onNavigate('/recipe');
+    });
+  });
 
   HomeDiv.appendChild(section2);
   section2.appendChild(buttonLogin);
   section2.appendChild(buttonHome);
+  section2.appendChild(buttonGoogle);
 
   return HomeDiv;
 };
-
-//const email = document.getElementById("email2").value;
-//const password = document.getElementById("password2").value; //con esto obtengo los valores email y password que fue ingresado
-//alert(email + password);
