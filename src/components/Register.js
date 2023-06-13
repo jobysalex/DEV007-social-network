@@ -52,7 +52,7 @@ export const Register = (onNavigate) => {
     iniciarConGoogle(
       inputEmail.value,
       inputPassword.value,
-    ).them(() => {
+    ).then(() => {
       onNavigate('/recipe');
     });
   });

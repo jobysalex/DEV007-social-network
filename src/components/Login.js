@@ -58,7 +58,7 @@ export const Login = (onNavigate) => {
         onNavigate('/recipe');
       });
     });
-
-    return HomeDiv;
   });
+
+  return HomeDiv;
 };
