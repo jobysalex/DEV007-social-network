@@ -3,8 +3,8 @@ import { Home } from './components/Home.js';
 import { Register } from './components/Register.js';
 import { Login } from './components/Login.js';
 import { Posting } from './components/Posting.js';
-import { Recipe } from './components/Recipe.js';
-import { ReadRecipe } from './components/ReadRecipe.js';
+// import { Recipe } from './components/Recipe.js';
+// import { ReadRecipe } from './components/ReadRecipe.js';
 
 const rootDiv = document.getElementById('root');
 
@@ -13,8 +13,8 @@ const routes = {
   '/register': Register,
   '/login': Login,
   '/posting': Posting,
-  '/recipe': Recipe,
-  '/readRecipe': ReadRecipe,
+  // '/recipe': Recipe,
+  // '/readRecipe': ReadRecipe,
 };
 
 export const onNavigate = (pathname) => {

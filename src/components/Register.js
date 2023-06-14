@@ -1,10 +1,10 @@
 import {
   crearUsuarioConCorreoYContraseña,
-  iniciarConGoogle,
+
 } from '../Firebase.js';
 
 export const Register = (onNavigate) => {
-  const HomeDiv = document.createElement("div");
+  const HomeDiv = document.createElement('div');
 
   const viewRegister = `
   <div><img src = "./img/tarta.jpg" class = "imgMain" alt = "imgen de Tarta - Cocinemos Juntos "></div>
@@ -20,28 +20,31 @@ export const Register = (onNavigate) => {
   `;
 
   HomeDiv.innerHTML = viewRegister;
+
   const section2 = document.createElement('section');
   section2.classList.add('section2');
 
-  const buttonLogin = document.createElement("button");
-  buttonLogin.classList.add("buttonsPrincipals");
-  buttonLogin.textContent = "Registrarse";
-  // buttonLogin.addEventListener('click', () => onNavigate('/login'));
-  buttonLogin.onclick = function () {
-    const inputEmail = HomeDiv.querySelector("#email2");
-    const inputPassword = HomeDiv.querySelector("#password2");
-    console.log(inputEmail.value);
-    console.log(inputPassword.value);
+  const buttonLogin = document.createElement('button');
+  buttonLogin.classList.add('buttonsPrincipals');
+  buttonLogin.textContent = 'Registrarse';
+  buttonLogin.onclick = () => {
+    const inputEmail = HomeDiv.querySelector('#email2');
+    const inputPassword = HomeDiv.querySelector('#password2');
+    // console.log(inputEmail.value);
+    // console.log(inputPassword.value);
     crearUsuarioConCorreoYContraseña(inputEmail.value, inputPassword.value)
       .then(() => {
-        onNavigate("/login");
+        onNavigate('/login');
       })
       .catch((err) => console.log(err));
   };
-  const buttonGoogle = document.createElement('button');
-  buttonGoogle.classList.add('googleSignIn');
-  buttonGoogle.textContent = 'Registrarse con Google';
 
+<<<<<<< HEAD
+  const buttonHome = document.createElement('button');
+  buttonHome.classList.add('buttonsPrincipals');
+  buttonHome.textContent = 'Regresar al home';
+  buttonHome.addEventListener('click', () => onNavigate('/')); // esto es para que vuelva al home
+=======
   const buttonHome = document.createElement("button");
   buttonHome.classList.add("buttonsPrincipals");
   buttonHome.textContent = "Regresar al home";
@@ -56,11 +59,11 @@ export const Register = (onNavigate) => {
       onNavigate('/recipe');
     });
   });
+>>>>>>> 2d29cebf714e3b1a3cc2029dfc939c4bacb3a6e9
 
   HomeDiv.appendChild(section2);
   section2.appendChild(buttonLogin);
   section2.appendChild(buttonHome);
-  section2.appendChild(buttonGoogle);
 
   return HomeDiv;
 };
