@@ -159,3 +159,23 @@ input::placeholder {
   font-size: 1.3em;
   color: #443728;
 }  
+
+.googleSignIn {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  font-size: 1rem;
+  background-color: white;
+  width: 18rem;
+  height: 2.75rem;
+  font-family: 'Roboto', sans-serif;
+  border: solid 0.0625rem;
+  border-color: white;
+  color: #000;
+  border-radius: 2%;
+  letter-spacing: 0.0625rem;
+}
+
+.GoogleIcon {
+  width: 30px;
+}
