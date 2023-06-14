@@ -1,4 +1,4 @@
-import { iniciarConGoogle, iniciarsesion } from '../Firebase.js';
+import { iniciarsesion } from '../Firebase.js';
 
 export const Login = (onNavigate) => {
   const HomeDiv = document.createElement('div');
@@ -15,50 +15,67 @@ export const Login = (onNavigate) => {
   `;
 
   HomeDiv.innerHTML = viewLogin;
+
   const section2 = document.createElement('section');
   section2.classList.add('section2');
 
-  const buttonRecipe = document.createElement('button');
-  buttonRecipe.classList.add('buttonsPrincipals');
-  buttonRecipe.textContent = 'Ingresar';
-  buttonRecipe.addEventListener('click', () => onNavigate('/recipe'));
+  const buttonPosting = document.createElement('button');
+  buttonPosting.classList.add('buttonsPrincipals');
+  buttonPosting.textContent = 'Ingresar';
+  buttonPosting.addEventListener('click', () => onNavigate('/posting'));
 
   const buttonHome = document.createElement('button');
   buttonHome.classList.add('buttonsPrincipals');
   buttonHome.textContent = 'Regresar al Home';
   buttonHome.addEventListener('click', () => onNavigate('/'));
 
-  const buttonGoogle = document.createElement('button');
-  buttonGoogle.classList.add('googleSignIn');
-  buttonGoogle.textContent = 'Iniciar Seción con Google';
-
   const inputEmail = HomeDiv.querySelector('#input-email');
   const inputPassword = HomeDiv.querySelector('#input-password');
+  const messageContainer = HomeDiv.querySelector('#message');
 
   HomeDiv.appendChild(section2);
-  section2.appendChild(buttonRecipe);
+  section2.appendChild(buttonPosting);
   section2.appendChild(buttonHome);
-  section2.appendChild(buttonGoogle);
 
-  buttonRecipe.addEventListener('click', (e) => {
+  buttonPosting.addEventListener('click', (e) => {
     e.preventDefault();
     iniciarsesion(inputEmail.value, inputPassword.value)
       .then(() => {
-        onNavigate('/recipe');
+        onNavigate('/posting');
       })
-      .catch(() => {
-        alert('Usuario o contraseña no valido');
-        onNavigate('/');
-      });
+      .catch((error) => {
+        /* validaciones de firebase */
+        const errorCode = error.code;
+        switch (errorCode) {
+          case 'auth/user-not-found':
+            messageContainer.setAttribute('class', 'error');
+            messageContainer.innerHTML = '❌ Usuario no registrado';
+            break;
 
-    const btnGoogle = HomeDiv.querySelector('.googleSignIn');
-    btnGoogle.addEventListener('click', (e) => {
-      e.preventDefault();
-      iniciarConGoogle().then(() => {
-        onNavigate('/recipe');
-      });
-    });
+          case 'auth/wrong-password':
+            messageContainer.setAttribute('class', 'error');
+            messageContainer.innerHTML = '❌ Contraseña incorrecta';
+            break;
 
-    return HomeDiv;
+          case 'auth/invalid-email':
+            messageContainer.setAttribute('class', 'error');
+            messageContainer.innerHTML = '❌ Correo inválido';
+            break;
+
+          case 'auth/empty-field':
+            messageContainer.setAttribute('class', 'error');
+            messageContainer.innerHTML = '❌ Rellene todos los campos';
+            break;  
+        }
+        // alert('Usuario o contraseña no valido');
+        // onNavigate('/');
+      });
   });
+  /* Quitar el mensaje de error cuando el usuario escriba */
+  const clearErrorMessage = (e) => {
+    if (e.target.tagName === "INPUT") {
+      messageContainer.innerHTML = "";
+    }
+  };
+  return HomeDiv;
 };
