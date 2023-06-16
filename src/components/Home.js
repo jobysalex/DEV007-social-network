@@ -39,7 +39,8 @@ export const Home = (onNavigate) => {
   buttonGoogle.addEventListener('click', (e) => {
     e.preventDefault();
     iniciarConGoogle()
-      .then(() => {
+      .then((user) => {
+        console.log(user);
         onNavigate('/posting');
       });
   });
