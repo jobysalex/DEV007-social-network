@@ -2,6 +2,7 @@ import { iniciarsesion } from '../Firebase.js';
 
 export const Login = (onNavigate) => {
   const HomeDiv = document.createElement('div');
+  HomeDiv.setAttribute('class', 'home-div');
   const viewLogin = `
   <div><img src = "./img/Waffles.jpg" class = "imgMain" alt = "imgen de Waffles - Cocinemos Juntos "></div>
   <section class = "container">
@@ -11,6 +12,7 @@ export const Login = (onNavigate) => {
     <input type = "email" class = "email" id = "input-email" placeholder = "ejemplo@gmail.com" />
     <label> Ingresa tu contraseña </label>
     <input type = "password" class = "password" id = "input-password" placeholder = "xxxxxxx" />
+    <p id="mensajeError"></p>
   </section>
   `;
 
@@ -22,7 +24,7 @@ export const Login = (onNavigate) => {
   const buttonPosting = document.createElement('button');
   buttonPosting.classList.add('buttonsPrincipals');
   buttonPosting.textContent = 'Ingresar';
-  buttonPosting.addEventListener('click', () => onNavigate('/posting'));
+  // buttonPosting.addEventListener('click', () => onNavigate('/posting'));
 
   const buttonHome = document.createElement('button');
   buttonHome.classList.add('buttonsPrincipals');
@@ -31,7 +33,7 @@ export const Login = (onNavigate) => {
 
   const inputEmail = HomeDiv.querySelector('#input-email');
   const inputPassword = HomeDiv.querySelector('#input-password');
-  const messageContainer = HomeDiv.querySelector('#message');
+  const messageContainer = HomeDiv.querySelector('#mensajeError');
 
   HomeDiv.appendChild(section2);
   section2.appendChild(buttonPosting);
@@ -45,49 +47,24 @@ export const Login = (onNavigate) => {
       })
       .catch((error) => {
         /* validaciones de firebase */
+        messageContainer.setAttribute('class', 'error');
         const errorCode = error.code;
-        switch (errorCode) {
-          case 'auth/user-not-found':
-            messageContainer.setAttribute('class', 'error');
-            messageContainer.innerHTML = '❌ Usuario no registrado';
-            break;
-
-<<<<<<< HEAD
-          case 'auth/wrong-password':
-            messageContainer.setAttribute('class', 'error');
-            messageContainer.innerHTML = '❌ Contraseña incorrecta';
-            break;
-
-          case 'auth/invalid-email':
-            messageContainer.setAttribute('class', 'error');
-            messageContainer.innerHTML = '❌ Correo inválido';
-            break;
-
-          case 'auth/empty-field':
-            messageContainer.setAttribute('class', 'error');
-            messageContainer.innerHTML = '❌ Rellene todos los campos';
-            break;  
+        if (errorCode === 'auth/invalid-email') {
+          messageContainer.innerHTML = '❌ Correo inválido';
+          // alert('usuario no registrado');
+        } else if (errorCode === 'auth/wrong-password') {
+          messageContainer.innerHTML = '❌ Contraseña incorrecta';
+        } else if (errorCode === 'auth/user-not-found') {
+          messageContainer.innerHTML = '❌ Usuario no registrado';
         }
-        // alert('Usuario o contraseña no valido');
-        // onNavigate('/');
       });
   });
+
   /* Quitar el mensaje de error cuando el usuario escriba */
   const clearErrorMessage = (e) => {
     if (e.target.tagName === "INPUT") {
       messageContainer.innerHTML = "";
     }
   };
-=======
-    const btnGoogle = HomeDiv.querySelector('.googleSignIn');
-    btnGoogle.addEventListener('click', (e) => {
-      e.preventDefault();
-      iniciarConGoogle().then(() => {
-        onNavigate('/recipe');
-      });
-    });
-  });
-
->>>>>>> 2d29cebf714e3b1a3cc2029dfc939c4bacb3a6e9
   return HomeDiv;
 };
