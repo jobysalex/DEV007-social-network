@@ -12,6 +12,7 @@ export const Login = (onNavigate) => {
     <input type = "email" class = "email" id = "input-email" placeholder = "ejemplo@gmail.com" />
     <label> Ingresa tu contraseña </label>
     <input type = "password" class = "password" id = "input-password" placeholder = "xxxxxxx" />
+    <p id="mensajeError"></p>
   </section>
   `;
 
@@ -32,7 +33,7 @@ export const Login = (onNavigate) => {
 
   const inputEmail = HomeDiv.querySelector('#input-email');
   const inputPassword = HomeDiv.querySelector('#input-password');
-  const messageContainer = document.createElement('p');
+  const messageContainer = HomeDiv.querySelector('#mensajeError');
 
   HomeDiv.appendChild(section2);
   section2.appendChild(buttonPosting);
@@ -46,20 +47,15 @@ export const Login = (onNavigate) => {
       })
       .catch((error) => {
         /* validaciones de firebase */
+        messageContainer.setAttribute('class', 'error');
         const errorCode = error.code;
         if (errorCode === 'auth/invalid-email') {
-          messageContainer.setAttribute('class', 'error');
-          messageContainer.innerHTML = '❌ Usuario no registrado';
+          messageContainer.innerHTML = '❌ Correo inválido';
           // alert('usuario no registrado');
         } else if (errorCode === 'auth/wrong-password') {
-          messageContainer.setAttribute('class', 'error');
           messageContainer.innerHTML = '❌ Contraseña incorrecta';
-        } else if (errorCode === 'auth/invalid-email') {
-          messageContainer.setAttribute('class', 'error');
-          messageContainer.innerHTML = '❌ Correo inválido';
-        } else if (errorCode === 'auth/empty-field') {
-          messageContainer.setAttribute('class', 'error');
-          messageContainer.innerHTML = '❌ Rellene todos los campos';
+        } else if (errorCode === 'auth/user-not-found') {
+          messageContainer.innerHTML = '❌ Usuario no registrado';
         }
       });
   });
