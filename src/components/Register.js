@@ -39,27 +39,10 @@ export const Register = (onNavigate) => {
       .catch((err) => console.log(err));
   };
 
-<<<<<<< HEAD
   const buttonHome = document.createElement('button');
   buttonHome.classList.add('buttonsPrincipals');
   buttonHome.textContent = 'Regresar al home';
   buttonHome.addEventListener('click', () => onNavigate('/')); // esto es para que vuelva al home
-=======
-  const buttonHome = document.createElement("button");
-  buttonHome.classList.add("buttonsPrincipals");
-  buttonHome.textContent = "Regresar al home";
-  buttonHome.addEventListener("click", () => onNavigate("/")); // esto es para que vuelva al home
-
-  buttonGoogle.addEventListener('click', (e) => {
-    e.preventDefault();
-    iniciarConGoogle(
-      inputEmail.value,
-      inputPassword.value,
-    ).then(() => {
-      onNavigate('/recipe');
-    });
-  });
->>>>>>> 2d29cebf714e3b1a3cc2029dfc939c4bacb3a6e9
 
   HomeDiv.appendChild(section2);
   section2.appendChild(buttonLogin);

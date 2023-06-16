@@ -52,7 +52,6 @@ export const Login = (onNavigate) => {
             messageContainer.innerHTML = '❌ Usuario no registrado';
             break;
 
-<<<<<<< HEAD
           case 'auth/wrong-password':
             messageContainer.setAttribute('class', 'error');
             messageContainer.innerHTML = '❌ Contraseña incorrecta';
@@ -78,16 +77,5 @@ export const Login = (onNavigate) => {
       messageContainer.innerHTML = "";
     }
   };
-=======
-    const btnGoogle = HomeDiv.querySelector('.googleSignIn');
-    btnGoogle.addEventListener('click', (e) => {
-      e.preventDefault();
-      iniciarConGoogle().then(() => {
-        onNavigate('/recipe');
-      });
-    });
-  });
-
->>>>>>> 2d29cebf714e3b1a3cc2029dfc939c4bacb3a6e9
   return HomeDiv;
 };

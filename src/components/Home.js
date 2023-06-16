@@ -31,7 +31,11 @@ export const Home = (onNavigate) => {
 
   const buttonGoogle = document.createElement('button');
   buttonGoogle.classList.add('googleSignIn');
+  const imgGoogle = document.createElement('img');
+  imgGoogle.classList.add('googleIcon');
+  imgGoogle.src = '../img/iconGoogle3.jpg';
   buttonGoogle.textContent = 'Acceder con Google';
+
   buttonGoogle.addEventListener('click', (e) => {
     e.preventDefault();
     iniciarConGoogle()
@@ -48,6 +52,7 @@ export const Home = (onNavigate) => {
   section2.appendChild(buttonRegister);
   section2.appendChild(buttonLogin);
   section2.appendChild(buttonGoogle);
+  buttonGoogle.appendChild(imgGoogle);
 
   return HomeDiv;
 };
