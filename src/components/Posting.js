@@ -5,7 +5,7 @@ export const Posting = (onNavigate) => {
 
   const viewPosting = `
   <div>   
-  <div><img src = "./img/Cocinar.png" class = "imgMain" alt = "Imagen Cocinando - Cocinemos Juntos "></div>     
+  <div><img src = "./img/Cocinar.jpg" class = "imgMain" alt = "Imagen Cocinando - Cocinemos Juntos "></div>     
   </div>
   <section class = "container" id = "container" >
   <img class = "logo3" src = "./img/Logo3.png">

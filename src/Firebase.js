@@ -46,11 +46,6 @@ export function iniciarConGoogle() {
   return signInWithPopup(auth, provider);
 }
 
-// Funcion para conectar FireStore
-export const firebase = require('firebase');
-// Required for side-effects
-require('firebase/firestore');
-
 // Initialize Firebase
 // const app = initializeApp(firebaseConfig);
 
@@ -62,7 +57,8 @@ export function crearPost(texto) {
   });
   console.log('Document written with ID: ', docRef.id);
 }
-// const querySnapshot = await getDocs(collection(db, "post"));
+
+// const querySnapshot = getDocs(collection(db, "post"));
 // querySnapshot.forEach((doc) => {
 //   console.log(`${doc.id} => ${doc.data()}`);
 // });
