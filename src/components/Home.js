@@ -42,6 +42,9 @@ export const Home = (onNavigate) => {
       .then((user) => {
         console.log(user);
         onNavigate('/posting');
+      })
+      .catch((error) => {
+        console.log(error.message);
       });
   });
   // const buttonPosting = document.createElement('button');

@@ -7,6 +7,12 @@ import {
   createUserWithEmailAndPassword,
   signInWithPopup,
 } from 'firebase/auth';
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  // getDocs,
+} from 'firebase/firestore';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyDSOGg0XwGEFGCZEwnyaMopX8zyrHPlk_A',
@@ -26,7 +32,7 @@ export const auth = getAuth(app);
 
 // funcion registrarse secion con mail y password
 export function crearUsuarioConCorreoYContraseña(email, password) {
- return createUserWithEmailAndPassword(auth, email, password);
+  return createUserWithEmailAndPassword(auth, email, password);
 }
 
 // funcion iniciar secion con mail y password
@@ -39,3 +45,24 @@ export function iniciarConGoogle() {
   const provider = new GoogleAuthProvider();
   return signInWithPopup(auth, provider);
 }
+
+// Funcion para conectar FireStore
+export const firebase = require('firebase');
+// Required for side-effects
+require('firebase/firestore');
+
+// Initialize Firebase
+// const app = initializeApp(firebaseConfig);
+
+// Initialize Cloud Firestore and get a reference to the service
+const db = getFirestore(app);
+export function crearPost(texto) {
+  const docRef = addDoc(collection(db, 'post'), {
+    post: texto,
+  });
+  console.log('Document written with ID: ', docRef.id);
+}
+// const querySnapshot = await getDocs(collection(db, "post"));
+// querySnapshot.forEach((doc) => {
+//   console.log(`${doc.id} => ${doc.data()}`);
+// });
