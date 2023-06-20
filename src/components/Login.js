@@ -62,9 +62,12 @@ export const Login = (onNavigate) => {
 
   /* Quitar el mensaje de error cuando el usuario escriba */
   const clearErrorMessage = (e) => {
-    if (e.target.tagName === "INPUT") {
-      messageContainer.innerHTML = "";
+    if (e.target.tagName === 'INPUT') {
+      messageContainer.innerHTML = '';
     }
   };
+  const section = HomeDiv.querySelector('section');
+  section.addEventListener('keyup', clearErrorMessage);
+
   return HomeDiv;
 };

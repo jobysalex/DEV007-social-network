@@ -47,11 +47,11 @@
     "version": "6.2.0",
     "commit": "a5360f78b634be4f14eaea996ee4c7afc85a2f48"
   },
-  "dependencies": {
-    "firebase": "^9.22.1"
-  },
   "directories": {
     "test": "test"
   },
-  "author": ""
+  "author": "",
+  "dependencies": {
+    "firebase": "^9.22.2"
+  }
 }
