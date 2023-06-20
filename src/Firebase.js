@@ -11,8 +11,10 @@ import {
   getFirestore,
   collection,
   addDoc,
-  // getDocs,
-} from 'firebase/firestore';
+  getDocs,
+  deleteDoc,
+  doc,
+  } from 'firebase/firestore';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyDSOGg0XwGEFGCZEwnyaMopX8zyrHPlk_A',
@@ -58,7 +60,16 @@ export function crearPost(texto) {
   console.log('Document written with ID: ', docRef.id);
 }
 
-// const querySnapshot = getDocs(collection(db, "post"));
+// export const querySnapshot = getDocs(collection(db, "post"));
 // querySnapshot.forEach((doc) => {
 //   console.log(`${doc.id} => ${doc.data()}`);
 // });
+
+export const ShowPost = await getDocs(collection(db, "post"));
+ShowPost.forEach((doc) => {
+
+  // doc.data() is never undefined for query doc snapshots
+  return(doc.id, " => ", doc.data());
+});
+
+export const borrarDoc = id => deleteDoc(doc(db, "post", id));

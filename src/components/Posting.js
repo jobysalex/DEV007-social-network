@@ -1,4 +1,4 @@
-import { crearPost } from '../Firebase.js';
+import { crearPost, ShowPost, borrarDoc } from '../Firebase.js';
 
 export const Posting = (onNavigate) => {
   const HomeDiv = document.createElement('div');
@@ -12,8 +12,10 @@ export const Posting = (onNavigate) => {
   <p>¡Inspirarás a otros con tu receta!</p>
   <textarea id = "textPost" placeholder = "Comparte tu obra maestra culinaria: título, ingredientes, pasos." >  </textarea>
   <button type ="submit" class = "buttonsPrincipals" id = "buttonPost"> Publicar </button>
-  <p>¡Descubre deliciosas recetas! ¡Haz clic y disfruta!<p>
-  </section>
+  <p class = "disfruta" >¡Descubre deliciosas recetas!<p>
+   </section>
+   <section class = "containerShowPost" id = "containerShowPost" >
+   </section>
   `;
 
   HomeDiv.innerHTML = viewPosting;
@@ -39,9 +41,45 @@ export const Posting = (onNavigate) => {
     crearPost(textPost.value);
   });
 
+  // Mostrar Post
+  const containerShowPost = HomeDiv.querySelector('#containerShowPost');
+  containerShowPost.innerHTML = ''; // Solo aquí limpiamos chicas
+  ShowPost.forEach((doc) => {
+    // console.log(doc.data());
+    const postDiv = document.createElement('div');
+    postDiv.className = 'clasePost';
+    postDiv.innerHTML = `
+    <div class=verpost >
+    <p>${doc.data().post}</p>
+    <div>
+      <button class="btnDelete" data-id='${doc.id}'>
+      🗑 Borrar
+      </button>
+      <button class="btnEdit" data-id='${doc.id}'>
+        🖉 Editar
+      </button>
+      <button class="btnLikes" data-id='${doc.id}'>
+        &#128151 Likes
+      </button>
+    </div>
+    </div>
+  `;
+    containerShowPost.appendChild(postDiv);
+  // Y acá asignamos el append para que luego de leer todas las muestre
+  });
+
+  // Borrar Post
+  const btnsDelete = containerShowPost.querySelectorAll('.btnDelete');
+  btnsDelete.forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      console.log(e.target.dataset.id);
+      borrarDoc(e.target.dataset.id);
+    });
+  });
+
   HomeDiv.appendChild(section2);
   // section2.appendChild(buttonReadRecipe);
   section2.appendChild(buttonHome);
 
-  return (HomeDiv);
+  return HomeDiv;
 };
