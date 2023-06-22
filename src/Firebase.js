@@ -12,6 +12,7 @@ import {
   collection,
   addDoc,
   getDocs,
+  getDoc,
   deleteDoc,
   doc,
   } from 'firebase/firestore';
@@ -53,8 +54,9 @@ export function iniciarConGoogle() {
 
 // Initialize Cloud Firestore and get a reference to the service
 const db = getFirestore(app);
-export function crearPost(texto) {
+export function crearPost(titulo,texto) {
   const docRef = addDoc(collection(db, 'post'), {
+    title: titulo,
     post: texto,
   });
   console.log('Document written with ID: ', docRef.id);
@@ -73,3 +75,6 @@ ShowPost.forEach((doc) => {
 });
 
 export const borrarDoc = id => deleteDoc(doc(db, "post", id));
+
+
+export const editarPost = (id) => getDoc(doc(db, "post", id));
