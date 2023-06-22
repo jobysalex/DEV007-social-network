@@ -19,23 +19,25 @@ export const Home = (onNavigate) => {
   const section2 = document.createElement('section');
   section2.classList.add('section2');
 
+  // Boton de Resgistrarse
   const buttonRegister = document.createElement('button');
   buttonRegister.classList.add('buttonsPrincipals');
   buttonRegister.textContent = 'Registrate';
   buttonRegister.addEventListener('click', () => onNavigate('/register'));
 
+  // Boton de Login con correo y contraseña
   const buttonLogin = document.createElement('button');
   buttonLogin.classList.add('buttonsPrincipals');
   buttonLogin.textContent = 'Inicia sesión';
   buttonLogin.addEventListener('click', () => onNavigate('/login'));
 
+  // Boton de Google y evento escucha
   const buttonGoogle = document.createElement('button');
   buttonGoogle.classList.add('googleSignIn');
   const imgGoogle = document.createElement('img');
   imgGoogle.classList.add('googleIcon');
   imgGoogle.src = '../img/iconGoogle3.jpg';
   buttonGoogle.textContent = 'Acceder con Google';
-
   buttonGoogle.addEventListener('click', (e) => {
     e.preventDefault();
     iniciarConGoogle()
@@ -47,11 +49,13 @@ export const Home = (onNavigate) => {
         console.log(error.message);
       });
   });
+
   // const buttonPosting = document.createElement('button');
   // buttonPosting.classList.add('buttonsPrincipals');
   // buttonPosting.textContent = 'Deliciosas Recetas';
   // buttonPosting.addEventListener('click', () => onNavigate('/posting'));
 
+  // Declaracion de dependencias
   HomeDiv.appendChild(section2);
   section2.appendChild(buttonRegister);
   section2.appendChild(buttonLogin);

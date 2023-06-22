@@ -21,24 +21,29 @@ export const Login = (onNavigate) => {
   const section2 = document.createElement('section');
   section2.classList.add('section2');
 
+  // Boton iniciar sesion
   const buttonPosting = document.createElement('button');
   buttonPosting.classList.add('buttonsPrincipals');
   buttonPosting.textContent = 'Ingresar';
   // buttonPosting.addEventListener('click', () => onNavigate('/posting'));
 
+  // Boton Regresar al Home
   const buttonHome = document.createElement('button');
   buttonHome.classList.add('buttonsPrincipals');
   buttonHome.textContent = 'Regresar al Home';
   buttonHome.addEventListener('click', () => onNavigate('/'));
 
+  // Declaración de constantes
   const inputEmail = HomeDiv.querySelector('#input-email');
   const inputPassword = HomeDiv.querySelector('#input-password');
   const messageContainer = HomeDiv.querySelector('#mensajeError');
 
+  // Declaracion de dependencia
   HomeDiv.appendChild(section2);
   section2.appendChild(buttonPosting);
   section2.appendChild(buttonHome);
 
+  // Escuha el evento del boton login
   buttonPosting.addEventListener('click', (e) => {
     e.preventDefault();
     iniciarsesion(inputEmail.value, inputPassword.value)
@@ -60,7 +65,7 @@ export const Login = (onNavigate) => {
       });
   });
 
-  /* Quitar el mensaje de error cuando el usuario escriba */
+  // Quitar el mensaje de error cuando el usuario escriba
   const clearErrorMessage = (e) => {
     if (e.target.tagName === 'INPUT') {
       messageContainer.innerHTML = '';
