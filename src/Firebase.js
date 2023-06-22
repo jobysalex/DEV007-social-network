@@ -15,6 +15,7 @@ import {
   getDoc,
   deleteDoc,
   doc,
+  updateDoc,
   } from 'firebase/firestore';
 
 const firebaseConfig = {
@@ -78,3 +79,8 @@ export const borrarDoc = id => deleteDoc(doc(db, "post", id));
 
 
 export const editarPost = (id) => getDoc(doc(db, "post", id));
+
+export const actualizarPost = (id, newFields) =>
+  updateDoc(doc(db, "post", id), newFields);
+
+export const editarPosts = () => getDocs(collection(db, "post"));
