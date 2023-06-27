@@ -35,6 +35,14 @@ textarea {
   border-radius: 10px;
   padding: 5%;
   margin: 3%;
+  }
+
+.texPost {
+  color: rgb(168, 166, 166);
+}
+
+.texTitle {
+  color: rgb(168, 166, 166);
 }
 
 .div3 {
@@ -87,6 +95,7 @@ p {
   color: #443728;
   text-align: justify;
   font-style: italic;
+  padding-bottom: 7px;
 }
 
 .pRecipe { 
@@ -192,7 +201,7 @@ input::placeholder {
   background-color: white;
   border-color:  rgb(248, 248, 248);
   border: 1px solid orangered; 
-  padding: 3%;
+  padding-left: 3% 
   
 
 
@@ -211,3 +220,45 @@ input::placeholder {
 .disfruta{
   margin: 3% 3% 0% 3%;
 }
+
+.btnDelete {
+  width: 60px;
+  height: 25px;
+  background-color: white;
+  border-radius: 7px;
+  border: 1px solid orangered; 
+  margin: 5px;
+  
+}
+.btnEdit {
+  width: 60px;
+  height: 25px;
+  background-color: white;
+  border-radius: 7px;
+  border: 1px solid orangered; 
+  margin: 5px;
+}
+.btnLikes {
+  width: 60px;
+  height: 25px;
+  background-color: white;
+  border-radius: 7px;
+  border: 1px solid orangered; 
+  margin: 5px;
+  }
+
+.clasePost {
+  width: 100%;
+  margin: 3%;
+  border-radius: 20px;
+}
+
+.botones {
+  display: flex;
+  margin-top: 15px;
+  justify-content: right;
+  
+}
+/* .likesCount { 
+  font-weight:bold
+} */
