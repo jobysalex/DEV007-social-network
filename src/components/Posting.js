@@ -84,7 +84,7 @@ export const Posting = (onNavigate) => {
         🖉 Editar
       </button>
       <button class="btnLikes btnLikesCount" data-id='${doc.id}'>
-      <span class="likesCount">${doc.data().likes.length}</span>
+      <span class="likesCount">${doc.data().like.length}</span>
       &#128151 
       Likes 
       </button>
@@ -182,7 +182,7 @@ export const Posting = (onNavigate) => {
       }
       editPost = false;
       guardarId = '';
-      containerPost.innerText = 'Publicado';
+      //containerPost.innerText = 'Publicado';
 
       textTitle.value = '';
       textPost.value = '';

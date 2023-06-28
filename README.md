@@ -35,43 +35,75 @@ Humano: 3 desarolladores. Colaboración adicional de acuerdo a las necesidades (
 ## 4. Descripción del Proyecto
 El presente proyecto enmarca la realizacionde una Red Social cuyo propósito es unir a las personas interesadas en compartir recetas de cocina con personas interesadas en aprender a cocinar desde cualquier nivel de conocimiento. La ideas es crear una comunidad de intercambio para todo el que desee o necesite uan receta, promoviendo el intercambio de recetas, tips ideas que faciliten el proceso de quien desea realizar un determinado platillo y hacer amigos en torno a la gstronomia.
 La intension principal es que todo usuario con interes en la cocina pueda sentirse a gusto en la comunidad sin importar su nivel de conocimiento o destresa. La idia principal es unir a la gente en torno a la gstromonia y poder crecer en comunidad.
+
 *Planificacioón del Proyecto*
 Toda la organizacion y seguimiento de las actividades se realizó a traves de la herramienta Trello, a continuacion compartimos el link:
+
 https://trello.com/b/gOSbciUH/social-network-05
 ![](./ImagenReadme/Trello.png)
+
 *Encuesta Incial a Ususarios*
 Para llegar a este tema, se realizó una tormenta de ideas. Posterirmente, para darle forma a la red social se diseñó un cuestionario que nos ayudó a iniciar el proceso de diseño de los prototipo de baja y de alta. a continuacion presentamos los resultados de dicho cuestionario:
+
 COLOCAR FOTOS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
 *Perfil de usuario*
+
 ![](./ImagenReadme/PerfilDeUsuario.png)
+
 *Guía de Diseño*
+
 ![](./ImagenReadme/GuiaDeDiseño.png)
+
 *Historias de Usuario y Prototipos:*
+
 Prototipo de baja:
+
 ![](./ImagenReadme/Protipo%20de%20Baja.png)
+
 Prototipo de ALTA:
 a continuacion compartimos el link al prototipo de alta realizado en Canva
+
 https://cocinamosjuntos.my.canva.site/
+
 seguidamente justificamos la razon del prototipo y cada historia de usuario.
+
 *Logo*
-El logo due diseñado por el equipo de trabajo, y durante los test de usuarios recibió buenos comentarios. A continuacion presentamos las dos formas de uso de logo dentro de la aplicacion:
+
+El logo fue diseñado por el equipo de trabajo, y durante los test de usuarios recibió buenos comentarios. A continuacion presentamos las dos formas de uso de logo dentro de la aplicacion:
+
 Logo en dispocición vertical:
+
 ![](./src/img/Logo1.png)
+
 Logo en disposición horizontal
+
 ![](./src/img/Logo3.png)
+
 MOBILE:
 Historia 1: pantalla inicial en la cual se presenta la aplicacióny se tienen las obciones de resgitrarse, iniciar seccion en la red cocial, inlcuyendo la opcion de google que es amigable y muy apreciada por los usuarios.
+
 ![](./ImagenReadme/ProtAltaMobile1.png)
+
 Historia 2: esta historia de usuario le permitehcaer su registro en la red social con un correo y contraseña que escoja. dicha historia guía al usuario a traves de mensajes de error si los datos ingresados no son adecuados para hacer su registro.
+
 ![](./ImagenReadme/ProtAltaMobile2.png)
+
 Historia 3: una vez el usuario ya esta registrado, esta es la opción natural cada vez que desee ingresar a la red social. para lo cual tiene que ingresar el correo y contrasela con la que se registró. Igualmente si algun dato no coincide la aplicacion le generará un mensaje de error.
+
 ![](./ImagenReadme/ProtAltaMobile3.png)
+
 Historia 4: Esta historia incluye el corazon de la red social en ella estan las opciones de consultar e interactuar con las publicaciones sí como publicar.
+
 Consulta de Publicaciones: el usuario puede leer las publicaciones de otros usuarios, puede dar like a las mismas.
 Publicar: eauduario puede publicar su propia receta, editarla o borrarla si así lo desea.
+
 ![](./ImagenReadme/ProtAltaMobile4.png)
+
 DESKTOP
-a continuacion una vista del diseño de alta para pantallas de computadoras de escritoio y laptos.
+
+A continuacion una vista del diseño de alta para pantallas de computadoras de escritoio y lapto.
+
 ![](./ImagenReadme/ProtAltaDesktop.png).
 
 #### Desarrollo del Proyecto
@@ -144,4 +176,5 @@ El presente proyecto fue desarrollado por:
 * Analía Klein.
 * Yohana Becerra.
 * Carmen Luna.
+
 La fuerza del equipo viene de cada miembro....
