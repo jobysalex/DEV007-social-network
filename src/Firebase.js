@@ -6,6 +6,7 @@ import {
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
   signInWithPopup,
+  //currentUser,
 } from 'firebase/auth';
 import {
   getFirestore,
@@ -50,23 +51,47 @@ export function iniciarConGoogle() {
   return signInWithPopup(auth, provider);
 }
 
-// Initialize Firebase
-// const app = initializeApp(firebaseConfig);
-
 // Initialize Cloud Firestore and get a reference to the service
-const db = getFirestore(app);
-export function crearPost(titulo,texto) {
-  const docRef = addDoc(collection(db, 'post'), {
-    title: titulo,
-    post: texto,
-  });
-  console.log('Document written with ID: ', docRef.id);
+export const db = getFirestore(app);
+
+// atrapar el usuario
+export function obtenerCorreoUsuario() {
+  const user = auth.currentUser;
+  // console.log(user.email);
+  if (user) {
+    return user.email;
+  } else {
+    return null;
+  }
 }
 
-// export const querySnapshot = getDocs(collection(db, "post"));
-// querySnapshot.forEach((doc) => {
-//   console.log(`${doc.id} => ${doc.data()}`);
-// });
+
+// Crear Post
+// export function crearPost(titulo,texto, email) {
+//   const docRef = addDoc(collection(db, 'post'), {
+//     title: titulo,
+//     post: texto,
+//     user: email,
+//    // like: [],
+//   });
+//   console.log('Document written with ID: ', docRef.id);
+// }
+export function crearPost(titulo, texto) {
+  const email = obtenerCorreoUsuario();
+  if (email) {
+    const docRef = addDoc(collection(db, 'post'), {
+      title: titulo,
+      post: texto,
+      user: email,
+      like: [],
+    });
+    console.log('Document written with ID: ', docRef.id);
+  } else {
+    console.log('No se puede obtener el correo electrónico del usuario.');
+  }
+}
+
+
 
 export const ShowPost = await getDocs(collection(db, "post"));
 ShowPost.forEach((doc) => {
@@ -80,7 +105,8 @@ export const borrarDoc = id => deleteDoc(doc(db, "post", id));
 
 export const editarPost = (id) => getDoc(doc(db, "post", id));
 
-export const actualizarPost = (id, newFields) =>
-  updateDoc(doc(db, "post", id), newFields);
-
+export const actualizarPost = async (id, newFields) => {
+ return updateDoc(doc(db, "post", id), newFields);
+  console.log(id, newFields)
+}
 export const editarPosts = () => getDocs(collection(db, "post"));

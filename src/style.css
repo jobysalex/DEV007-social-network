@@ -35,6 +35,14 @@ textarea {
   border-radius: 10px;
   padding: 5%;
   margin: 3%;
+  }
+
+.texPost {
+  color: rgb(168, 166, 166);
+}
+
+.texTitle {
+  color: rgb(168, 166, 166);
 }
 
 .div3 {
@@ -87,6 +95,7 @@ p {
   color: #443728;
   text-align: justify;
   font-style: italic;
+  padding-bottom: 7px;
 }
 
 .pRecipe { 
@@ -192,22 +201,190 @@ input::placeholder {
   background-color: white;
   border-color:  rgb(248, 248, 248);
   border: 1px solid orangered; 
-  padding: 3%;
-  
+  padding: 3% 3% 0% 3%
+  }
 
-
-}
-
+  .container {
+    margin: 5px 5px 0px 5px;
+    padding: 8px 15px 0px 15px;
+  }
 .containerShowPost {
   margin-top: 0px;
   flex: 75%;
   display: flex;
   justify-content: left;
-  height: 300px;
+  height: 280px;
   overflow-y: scroll;
   padding: 0% 5% 5% 5%;
+  align-items: center;
+  margin-bottom: 5px;
 }
 
 .disfruta{
   margin: 3% 3% 0% 3%;
+}
+
+.btnDelete {
+  width: 60px;
+  height: 25px;
+  background-color: white;
+  border-radius: 7px;
+  border: 1px solid orangered; 
+  margin: 5px;
+  
+}
+.btnEdit {
+  width: 60px;
+  height: 25px;
+  background-color: white;
+  border-radius: 7px;
+  border: 1px solid orangered; 
+  margin: 5px;
+}
+.btnLikes {
+  width: 80px;
+  height: 25px;
+  background-color: white;
+  border-radius: 7px;
+  border: 1px solid orangered; 
+  margin: 5px;
+  }
+
+.clasePost {
+  width: 100%;
+  margin: 3%;
+  border-radius: 20px;
+  
+}
+
+.botones {
+  display: flex;
+  margin-top: 15px;
+  justify-content: right;
+  
+}
+.likesCount { 
+  font-weight:bold
+} 
+
+/* Tablets, Ipads (portrait)
+@media (min-width: 768px) and (max-width: 1024px) { */
+
+/* Inicio Laptops, Desktops*/
+@media (min-width: 1025px) and (max-width: 1280px) {
+  * {
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    background-color: #f7ede9;
+    font-family: "Times New Roman", sans-serif;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+
+  .imgMain {
+    flex-direction: column;
+    width: 50%;
+    height: 500px;
+    display: flex;
+    float: left;
+    margin: 100px 0px 5px 0px;
+
+    
+  }
+
+  .logo {
+    width: 15%;
+    transform: translate(115%);
+    margin-top: 100px;
+  }
+
+  .logo3 {
+    width: 500px;
+    transform: translate(15%);
+    margin-top: 80px;
+  }
+
+  header {
+    display: flex;
+  }
+
+  section {
+    display: flex;
+    width: 50%;
+    flex-direction: column;
+  }
+
+  h1 {
+    grid-column: 2/12;
+    font-family: "Times New Roman", sans-serif;
+    font-size: 2.5em;
+    margin-top: 10px;
+    color: #443728;
+    text-align: center;
+  }
+
+  h2 {
+    grid-column: 2/12;
+    font-family: "Times New Roman", sans-serif;
+    font-size: 2em;
+    margin-top: 5px;
+    color: #443728;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  .section2 {
+    display: flex;
+  flex-direction: column;
+  border: 1px solid rgb(248, 248, 248);
+  border-radius: 7px;
+  padding: 7%;
+  margin: 7% 7% 7% 20%;
+  box-shadow: 0px 0px 5px 0px orangered;
+  height: 100px;
+  width: 300px
+  }
+  .buttonsPrincipals {
+    width: 200px;
+    height: 36px;
+    border-radius: 8px;
+    border: 1px solid rgb(248, 248, 248);
+    box-shadow: 0px 0px 5px 0px orangered;
+    background-color: rgba(251, 253, 253, 0.709);
+    margin: 30px 5px px 300px;
+    font-size: 1.3em;
+    color: #443728;
+  }
+
+  label {
+    grid-column: 2/12;
+    font-size: 1.5em;
+    margin-top: 8px;
+    margin-bottom: 10px;
+    color: #443728;
+    text-align: left;
+    margin-left: 100px;
+    font-weight: bold;
+    font-style: italic;
+  }
+
+  input {
+    border-radius: 5px;
+    height: 4vh;
+    background-color: rgba(251, 253, 253, 0.709);
+    width: 300px;
+    text-align: left;
+    padding: 4px;
+    margin-left: 100px;
+    color: #443728;
+    font-size: 1.3em;
+    font-family: "Times New Roman", sans-serif;
+  }
+
+  input::placeholder {
+    color: rgb(179, 176, 176);
+  }
 }
