@@ -52,6 +52,7 @@
   },
   "author": "",
   "dependencies": {
+    "@types/jest": "^29.5.2",
     "firebase": "^9.22.2"
   }
 }

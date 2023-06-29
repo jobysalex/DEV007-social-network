@@ -1,8 +1,9 @@
 // importamos la funcion que vamos a testear
-import { myFunction } from '../src/lib/index';
 
-describe('myFunction', () => {
-  it('debería ser una función', () => {
-    expect(typeof myFunction).toBe('function');
+import { iniciarsesion } from '../src/Firebase';
+
+describe('iniciarsesion', () => {
+  it('Debería ser una función', () => {
+    expect(typeof iniciarsesion).toBe('function');
   });
 });

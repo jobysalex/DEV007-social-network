@@ -17,7 +17,7 @@ import {
   deleteDoc,
   doc,
   updateDoc,
-  } from 'firebase/firestore';
+} from 'firebase/firestore';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyDSOGg0XwGEFGCZEwnyaMopX8zyrHPlk_A',
@@ -91,22 +91,18 @@ export function crearPost(titulo, texto) {
   }
 }
 
-
-
 export const ShowPost = await getDocs(collection(db, "post"));
 ShowPost.forEach((doc) => {
-
-  // doc.data() is never undefined for query doc snapshots
   return(doc.id, " => ", doc.data());
 });
 
-export const borrarDoc = id => deleteDoc(doc(db, "post", id));
+export const borrarDoc = id => deleteDoc(doc(db, 'post', id));
 
 
-export const editarPost = (id) => getDoc(doc(db, "post", id));
+export const editarPost = (id) => getDoc(doc(db, 'post', id));
 
 export const actualizarPost = async (id, newFields) => {
- return updateDoc(doc(db, "post", id), newFields);
+  return updateDoc(doc(db, 'post', id), newFields);
   console.log(id, newFields)
 }
-export const editarPosts = () => getDocs(collection(db, "post"));
+export const editarPosts = () => getDocs(collection(db, 'post'));
