@@ -182,7 +182,7 @@ export const Posting = (onNavigate) => {
       }
       editPost = false;
       guardarId = '';
-      //containerPost.innerText = 'Publicado';
+      // containerPost.innerText = 'Publicado';
 
       textTitle.value = '';
       textPost.value = '';
