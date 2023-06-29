@@ -4,6 +4,8 @@ import {
   doc,
   getDoc,
   updateDoc as updateDocument,
+  onSnapshot,
+  query
 } from 'firebase/firestore';
 // import { container } from 'webpack';
 import {
@@ -14,6 +16,7 @@ import {
   actualizarPost,
   db,
   obtenerCorreoUsuario,
+  auth,
 } from '../Firebase.js';
 
 export const Posting = (onNavigate) => {
@@ -64,49 +67,53 @@ export const Posting = (onNavigate) => {
 
   // Mostrar Post
   const containerShowPost = HomeDiv.querySelector('#containerShowPost');
-  containerShowPost.innerHTML = '';
-  // eslint-disable-next-line no-shadow
-  ShowPost.forEach((doc) => {
-    // console.log(doc.data());
-    const postDiv = document.createElement('div');
-    postDiv.className = 'clasePost';
-    postDiv.innerHTML = `
-    <div class=verpost >
-    <h3>${doc.data().title}</h3>
-    <p>${doc.data().post}</p>
-    <p>${doc.data().user}</p>
+  
+
+  
+  const q = query(collection(db, "post"))
+  onSnapshot(q, (querySnapshot) => {
+    containerShowPost.innerHTML = '';
     
-    <div class = Botones>
-      <button class="btnDelete" data-id='${doc.id}'>
-      🗑 Borrar
-      </button>
-      <button class="btnEdit" data-id='${doc.id}'>
-        🖉 Editar
-      </button>
-      <button class="btnLikes btnLikesCount" data-id='${doc.id}'>
-      <span class="likesCount">${doc.data().like.length}</span>
-      &#128151 
-      Likes 
-      </button>
-    </div>
-    </div>
-  `;
-    containerShowPost.appendChild(postDiv);
-  });
-
-  // Borrar Post
-  const btnsDelete = containerShowPost.querySelectorAll('.btnDelete');
-  btnsDelete.forEach((btn) => {
-    btn.addEventListener('click', (e) => {
-      // console.log(e.target.dataset.id);
-      // colocar la ventana modal para confirmacion de borrar
-      borrarDoc(e.target.dataset.id);
+    
+    querySnapshot.forEach((doc) => {
+      // console.log(doc.data());
+      const postDiv = document.createElement('div');
+      postDiv.className = 'clasePost';
+      postDiv.innerHTML = `
+      <div class=verpost >
+      <h3>${doc.data().title}</h3>
+      <p>${doc.data().post}</p>
+      <p>${doc.data().user}</p>
+      
+      <div class = Botones>
+        <button class="btnDelete" data-id='${doc.id}'>
+        🗑 Borrar
+        </button>
+        <button class="btnEdit" data-id='${doc.id}'>
+          🖉 Editar
+        </button>
+        <button class="btnLikes btnLikesCount" data-id='${doc.id}'>
+        <span class="likesCount">${doc.data().like.length}</span>
+        &#128151 
+        Likes 
+        </button>
+      </div>
+      </div>
+    `;
+      containerShowPost.appendChild(postDiv);
     });
-  });
 
-  // Editar Post
+    const btnsDelete = containerShowPost.querySelectorAll('.btnDelete');
+    console.log(btnsDelete)
+    btnsDelete.forEach((btn) => {
+      btn.addEventListener('click', (e) => {
+        // console.log(e.target.dataset.id);
+        // colocar la ventana modal para confirmacion de borrar
+        borrarDoc(e.target.dataset.id);
+      });
+    });
 
-  const btnsEdit = containerShowPost.querySelectorAll('.btnEdit');
+    const btnsEdit = containerShowPost.querySelectorAll('.btnEdit');
   btnsEdit.forEach((btn) => {
     btn.addEventListener('click', async (e) => {
       try {
@@ -128,67 +135,9 @@ export const Posting = (onNavigate) => {
       } catch (error) {
         // console.log(error);
       }
+
+      console.log(editPost)
     });
-  });
-
-  // Boton Publicar
-  buttonPost.addEventListener('click', async (e) => {
-    e.preventDefault();
-    // console.log(textTitle.value, textPost.value);
-    try {
-      if (!editPost) {
-        crearPost(textTitle.value, textPost.value);
-        // console.log('updating');
-        // aqui toca seguir por ahora ya tenemos atradao el texto para editar
-      } else {
-        actualizarPost(guardarId, {
-          title: textTitle.value,
-          post: textPost.value,
-          user: textUser.value,
-        }).then(() => {
-          // console.log('POST ACTUALIZADO!');
-          containerShowPost.innerHTML = '';
-          getDocs(collection(db, 'post')).then((docs) => {
-            // eslint-disable-next-line no-shadow
-            docs.forEach((doc) => {
-              // console.log(doc.data());
-              const postDiv = document.createElement('div');
-              postDiv.className = 'clasePost';
-              postDiv.innerHTML = `
-    <div class=verpost >
-    <h3>${doc.data().title}</h3>
-    <p>${doc.data().post}</p>
-    <p>${doc.data().user}</p>
-    <div class = Botones>
-      <button class="btnDelete" data-id='${doc.id}'>
-      🗑 Borrar
-      </button>
-      <button class="btnEdit" data-id='${doc.id}'>
-        🖉 Editar
-      </button>
-      <button class="btnLikes btnLikesCount" data-id='${doc.id}'>
-       &#128151 Likes 
-      <span class="likesCount"></span>
-     </button>
-    </div>
-    </div>
-  `;
-              containerShowPost.appendChild(postDiv);
-            });
-          });
-        });
-        // console.log(guardarId);
-        // Mostrar Post
-      }
-      editPost = false;
-      guardarId = '';
-      // containerPost.innerText = 'Publicado';
-
-      textTitle.value = '';
-      textPost.value = '';
-    } catch (error) {
-      console.log(error);
-    }
   });
 
   // Funcion Likes
@@ -205,7 +154,7 @@ export const Posting = (onNavigate) => {
         const postSnapshot = await getDoc(postDocRef);
 
         if (postSnapshot.exists()) {
-          const postLikes = postSnapshot.data().likes || [];
+          const postLikes = postSnapshot.data().like || [];
           const userIndex = postLikes.indexOf(userLikesPost);
 
           if (userIndex > -1) {
@@ -214,7 +163,7 @@ export const Posting = (onNavigate) => {
             postLikes.push(userLikesPost); // Agregar el nombre de usuario al arreglo de likes
           }
 
-          await updateDocument(postDocRef, { likes: postLikes });
+          await updateDocument(postDocRef, { like: postLikes });
           console.log('Likes Count:', postLikes.length);
           const numDeLikes = postLikes.length;
           likesCount.innerText = numDeLikes.toString();
@@ -226,6 +175,52 @@ export const Posting = (onNavigate) => {
       }
     });
   });
+  
+  });
+
+  // Boton Publicar
+  buttonPost.addEventListener('click', async (e) => {
+    e.preventDefault();
+    // console.log(textTitle.value, textPost.value);
+    try {
+      console.log(textUser)
+      if (!editPost) {
+        crearPost(textTitle.value, textPost.value);
+        // console.log('updating');
+        // aqui toca seguir por ahora ya tenemos atradao el texto para editar
+      } else {
+        actualizarPost(guardarId, {
+          title: textTitle.value,
+          post: textPost.value,
+          user: auth.currentUser.email,
+        });
+        // console.log(guardarId);
+        // Mostrar Post
+      }
+      editPost = false;
+      guardarId = '';
+      // containerPost.innerText = 'Publicado';
+
+      textTitle.value = '';
+      textPost.value = '';
+    } catch (error) {
+      console.log(error);
+    }
+  });
+
+  // eslint-disable-next-line no-shadow
+  
+
+  // Borrar Post
+ 
+
+  // Editar Post
+
+  
+
+  
+
+  
 
   HomeDiv.appendChild(section2);
   // section2.appendChild(buttonReadRecipe);
