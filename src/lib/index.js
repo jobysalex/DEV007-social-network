@@ -39,5 +39,3 @@
 //     const credential = GoogleAuthProvider.credentialFromError(error);
 //     // ...
 //   });
-
-

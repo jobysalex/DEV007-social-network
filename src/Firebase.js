@@ -6,7 +6,7 @@ import {
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
   signInWithPopup,
-  //currentUser,
+  // currentUser,
 } from 'firebase/auth';
 import {
   getFirestore,
@@ -60,11 +60,9 @@ export function obtenerCorreoUsuario() {
   // console.log(user.email);
   if (user) {
     return user.email;
-  } else {
-    return null;
   }
+  return null;
 }
-
 
 // Crear Post
 // export function crearPost(titulo,texto, email) {
@@ -91,18 +89,29 @@ export function crearPost(titulo, texto) {
   }
 }
 
-export const ShowPost = await getDocs(collection(db, "post"));
+/* export const ShowPost = getDocs(collection(db, 'post'));
 ShowPost.forEach((doc) => {
-  return(doc.id, " => ", doc.data());
-});
+  return (doc.id, ' => ', doc.data());
+}); */
+export const ShowPost = async () => {
+  const querySnapshot = await getDocs(collection(db, 'post'));
+  const posts = [];
+  querySnapshot.forEach((doc) => {
+    posts.push({
+      id: doc.id,
+      data: doc.data(),
+    });
+  });
+  return posts;
+};
 
-export const borrarDoc = id => deleteDoc(doc(db, 'post', id));
-
+export const borrarDoc = (id) => deleteDoc(doc(db, 'post', id));
 
 export const editarPost = (id) => getDoc(doc(db, 'post', id));
 
 export const actualizarPost = async (id, newFields) => {
   return updateDoc(doc(db, 'post', id), newFields);
-  console.log(id, newFields)
-}
+  // eslint-disable-next-line no-unreachable
+  console.log(id, newFields);
+};
 export const editarPosts = () => getDocs(collection(db, 'post'));
