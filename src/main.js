@@ -39,4 +39,3 @@ window.onpopstate = () => {
 };
 
 rootDiv.appendChild(routes[window.location.pathname](onNavigate));
-
