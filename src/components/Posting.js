@@ -1,5 +1,5 @@
 import {
-  getDocs,
+  // getDocs,
   collection,
   doc,
   getDoc,
@@ -7,7 +7,6 @@ import {
   onSnapshot,
   query,
 } from 'firebase/firestore';
-// import { container } from 'webpack';
 import {
   crearPost,
   ShowPost,
@@ -23,6 +22,7 @@ export const Posting = (onNavigate) => {
   const HomeDiv = document.createElement('div');
 
   const viewPosting = `
+
   <div>   
     <picture><img src = "./img/Cocinar.jpg" class = "imgMain" alt = "Imagen Cocinando - Cocinemos Juntos "></picture> 
   </div>
@@ -39,6 +39,7 @@ export const Posting = (onNavigate) => {
    <section class = "containerShowPost" id = "containerShowPost" >
    </section>
   `;
+
 
   HomeDiv.innerHTML = viewPosting;
 
@@ -61,15 +62,18 @@ export const Posting = (onNavigate) => {
   textPost.addEventListener('keyup', () => {
     buttonPost.removeAttribute('disabled');
   });
+
   // variables para guardar los post editados y el id de cada post
   let editPost = false;
   let guardarId = '';
 
   // Mostrar Post
   const containerShowPost = HomeDiv.querySelector('#containerShowPost');
+
   const q = query(collection(db, 'post'));
   onSnapshot(q, (querySnapshot) => {
     containerShowPost.innerHTML = '';
+
     querySnapshot.forEach((doc) => {
       // console.log(doc.data());
       const postDiv = document.createElement('div');
@@ -77,27 +81,30 @@ export const Posting = (onNavigate) => {
       postDiv.innerHTML = `
       <div class=verpost >
       <h3>${doc.data().title}</h3>
+
       <p class = "Receta" >${doc.data().post}</p>
       <p class = "Autor">${doc.data().user}</p>
       
+
       <div class = Botones>
-        <button class="btnDelete" data-id='${doc.id}'>
+        <button class='btnDelete' data-id='${doc.id}'>
         🗑 Borrar
         </button>
-        <button class="btnEdit" data-id='${doc.id}'>
+        <button class= 'btnEdit' data-id='${doc.id}'>
           🖉 Editar
         </button>
-        <button class="btnLikes btnLikesCount" data-id='${doc.id}'>
-        <span class="likesCount">${doc.data().like.length}</span>
+        <button class= 'btnLikes btnLikesCount' data-id='${doc.id}'>
+        <span class= 'likesCount'>${doc.data().like.length}</span>
         &#128151 
         Likes 
         </button>
       </div>
       </div>
-    `;
+      `;
       containerShowPost.appendChild(postDiv);
     });
 
+    // Borrar Post
     const btnsDelete = containerShowPost.querySelectorAll('.btnDelete');
     console.log(btnsDelete);
     btnsDelete.forEach((btn) => {
@@ -108,6 +115,7 @@ export const Posting = (onNavigate) => {
       });
     });
 
+    // Editar Post
     const btnsEdit = containerShowPost.querySelectorAll('.btnEdit');
     btnsEdit.forEach((btn) => {
       btn.addEventListener('click', async (e) => {
@@ -120,6 +128,7 @@ export const Posting = (onNavigate) => {
           textPost.value = receta.post;
           editPost = true;
           guardarId = doc.id;
+
           containerPost.buttonPost.innertext = 'Update';
           // console.log(error);
         } catch (error) {
@@ -175,7 +184,6 @@ export const Posting = (onNavigate) => {
       if (!editPost) {
         crearPost(textTitle.value, textPost.value);
         // console.log('updating');
-        // aqui toca seguir por ahora ya tenemos atradao el texto para editar
       } else {
         actualizarPost(guardarId, {
           title: textTitle.value,
@@ -187,7 +195,6 @@ export const Posting = (onNavigate) => {
       }
       editPost = false;
       guardarId = '';
-      // containerPost.innerText = 'Publicado';
 
       textTitle.value = '';
       textPost.value = '';
@@ -195,10 +202,17 @@ export const Posting = (onNavigate) => {
       console.log(error);
     }
   });
+  async function showPosts() {
+    const posts = await ShowPost();
+    posts.forEach((post) => {
+      console.log(post.id, ' => ', post.data);
+    });
+  }
 
   HomeDiv.appendChild(section3);
   // section2.appendChild(buttonReadRecipe);
   section3.appendChild(buttonHome);
+
 
   return HomeDiv;
 };
