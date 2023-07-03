@@ -7,7 +7,7 @@ export const Home = (onNavigate) => {
 
   const viewHome = `
 
-  <div><img src = "./img/Vegetales.jpg" class = "imgMain" alt = "Imagen de Vegetales - Cocinemos Juntos "></div>
+  <picture><img src = "./img/Vegetales.jpg" class = "imgMain" alt = "Imagen de Vegetales - Cocinemos Juntos "></picture>
   <section class = "container">
     <img class = "logo" src = "./img/Logo.png">
     <h1>¿Cocinamos Juntos?</h1>

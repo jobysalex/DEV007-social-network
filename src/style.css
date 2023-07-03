@@ -1,9 +1,51 @@
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
 }
 
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+/*----------------------*/
+
+/* HOME*/
 body {
   background-color:  #F7EDE9;
   font-family: 'Times New Roman', sans-serif;
@@ -13,80 +55,24 @@ body {
   max-width: 100%;
 }
 
-.div2 {
+.container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 7%;
-}
-
-section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 7%;
-}
-
-textarea { 
-  display: flex;
-  width: 100%;
-  border-radius: 10px;
-  padding: 5%;
-  margin: 3%;
-  }
-
-.texPost {
-  color: rgb(168, 166, 166);
-}
-
-.texTitle {
-  color: rgb(168, 166, 166);
-}
-
-.div3 {
-  display: flex;
-  color: #443728;
-  background-color: rgb(248, 248, 248);
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid #F7EDE9;
-  border-radius: 7px;
-  padding: 5%;
-  box-shadow: 0px 0px 5px 0px orangered;
+  margin: 5px 5px 0px 5px;
+  padding: 8px 15px 0px 15px;
 }
 
 .logo {
   max-width: 40%;
 }
 
-.logo3 { 
-  width: 110%;
-}
-
 h1 { 
-  font-family: 'Times New Roman', sans-serif;
   text-align: center;
   font-size: 250%;
   margin: 3%;
-  color: #443728;
-}
-
-h2 { 
-  font-family: 'Times New Roman', sans-serif;
-  text-align: center;
-  font-size: 250%;
-  margin: 1.5%;
-  color: #443728;
-}
-
-h3 { 
-  font-family: 'Times New Roman', sans-serif;
-  text-align: center;
-  font-size: 160%;
-  margin: 1.5%;
   color: #443728;
 }
 
@@ -96,58 +82,6 @@ p {
   text-align: justify;
   font-style: italic;
   padding-bottom: 7px;
-}
-
-.pRecipe { 
-  font-size: 170%;
-  color: #443728;
-  text-align: justify;
-  font-style: italic;
-}
-
-.pDiv { 
-  font-size: 160%;
-  color: #443728;
-  text-align: center;
-  font-weight: bold;
-  font-style: italic;
-}
-
-.titleRecipe { 
-  background-color: #F7EDE9;
-  color: #443728;
-}
-
-li { 
-  font-size: 140%;
-  margin: 1%;
-  color: #443728;
-  text-align: justify;
-  font-style: italic;
-}
-
-label { 
-  font-size: 150%;
-  color: #443728;
-  font-weight: bold;
-  font-style: italic;
-}
- 
-input { 
-  width: 270px;
-  height: 36px;
-  margin: 3%;
-  border: 1px solid orangered; 
-  background-color: rgba(251, 253, 253, 0.709);
-  border-radius: 5px;
-  text-align: center;
-  color:#443728;
-  font-size: 1.3em;
-  font-family: 'Times New Roman', sans-serif;
-}
-
-input::placeholder {
-  color:rgb(179, 176, 176);
 }
 
 .section2 {
@@ -197,44 +131,128 @@ input::placeholder {
   width: 12%;
 }
 
+/*Registrarse / Inciciar Sesión*/
+
+.logo3 { 
+  width: 110%;
+}
+
+h2 { 
+  font-family: 'Times New Roman', sans-serif;
+  text-align: center;
+  font-size: 250%;
+  margin: 1.5%;
+  color: #443728;
+}
+
+label { 
+  font-size: 150%;
+  color: #443728;
+  font-weight: bold;
+  font-style: italic;
+}
+
+input { 
+  width: 270px;
+  height: 36px;
+  margin: 3%;
+  border: 1px solid orangered; 
+  background-color: rgba(251, 253, 253, 0.709);
+  border-radius: 5px;
+  text-align: center;
+  color:#443728;
+  font-size: 1.3em;
+  font-family: 'Times New Roman', sans-serif;
+}
+
+/*Posting*/
+
+h4 {
+  font-size: 18px;
+}  
+
+.textTitle{
+  display: flex;
+  width: 90%;
+  border-radius: 5px;
+  padding: 3%;
+  margin: 3%;
+  height: 5px;
+}
+.textPost {
+  display: flex;
+  width: 90%;
+  border-radius: 8px;
+  padding: 3%;
+  margin: 3%;
+  height: 30px;
+}
+
+input::placeholder {
+  color:rgb(179, 176, 176);
+}
+
+ /*aqui dpnde se imprimen las recetas*/
+.containerShowPost {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /*justify-content: center;*/
+  height: 280px;
+  margin: 5px 5px 0px 5px;
+  padding: 5px 8px 5px 8px;
+  height: 280px;
+  overflow-y: scroll;
+}
+.clasePost {
+  width: 100%;
+  padding: 3% 3% 3% 3%
+}
+
 .verpost {
   background-color: white;
   border-color:  rgb(248, 248, 248);
   border: 1px solid orangered; 
   padding: 3% 3% 0% 3%
   }
-
-  .container {
-    margin: 5px 5px 0px 5px;
-    padding: 8px 15px 0px 15px;
-  }
-.containerShowPost {
-  margin-top: 0px;
-  flex: 75%;
-  display: flex;
-  justify-content: left;
-  height: 280px;
-  overflow-y: scroll;
-  padding: 0% 5% 5% 5%;
-  align-items: center;
-  margin-bottom: 5px;
+  
+h3 { 
+  font-family: 'Times New Roman', sans-serif;
+  text-align: center;
+  font-size: 25px;
+  margin: 1%;
+  color: #443728;
 }
 
-.disfruta{
-  margin: 3% 3% 0% 3%;
+.Receta {
+  font-size: 20px;
+
+
+}
+
+.Autor {
+  font-size: 15px;
+  text-align: right;
+}
+
+/*Bototes de editar, borrar y likes*/
+
+.Botones {
+  display: flex;
+  margin-top: 15px;
+  justify-content: center;
 }
 
 .btnDelete {
-  width: 60px;
+  width: 70px;
   height: 25px;
   background-color: white;
   border-radius: 7px;
   border: 1px solid orangered; 
   margin: 5px;
-  
 }
 .btnEdit {
-  width: 60px;
+  width: 70px;
   height: 25px;
   background-color: white;
   border-radius: 7px;
@@ -249,142 +267,97 @@ input::placeholder {
   border: 1px solid orangered; 
   margin: 5px;
   }
+  .likesCount { 
+    font-weight:bold
+  } 
 
-.clasePost {
-  width: 100%;
-  margin: 3%;
-  border-radius: 20px;
-  
-}
+  /*Boton cerrar Sesion*/
 
-.botones {
-  display: flex;
-  margin-top: 15px;
-  justify-content: right;
-  
-}
-.likesCount { 
-  font-weight:bold
-} 
+  .section3 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border: 1px solid rgb(248, 248, 248);
+    border-radius: 7px;
+    padding: 2%;
+    margin: 2% 5% 8% 30%;
+    box-shadow: 0px 0px 5px 0px orangered;
+    width: 150px;
+    height: 20px;    
+  }
 
 /* Tablets, Ipads (portrait)
 @media (min-width: 768px) and (max-width: 1024px) { */
 
 /* Inicio Laptops, Desktops*/
 @media (min-width: 1025px) and (max-width: 1280px) {
-  * {
+  *{
     margin: 0;
     padding: 0;
+  } 
+
+  html {
+    margin-top: 250px;
+    margin-left: 2%;
+    margin-right: 2%;
+    border: 1px solid rgb(248, 248, 248);
+    border-radius: 7px;
+    box-shadow: 0px 0px 5px 0px orangered;
+   
   }
+
+  /*HOME*/
   body {
-    background-color: #f7ede9;
-    font-family: "Times New Roman", sans-serif;
+    background-color:  #F7EDE9;
+    font-family: 'Times New Roman', sans-serif;
     display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-  }
-
-  .imgMain {
-    flex-direction: column;
-    width: 50%;
-    height: 500px;
-    display: flex;
-    float: left;
-    margin: 100px 0px 5px 0px;
-
+    align-items: center;
     
-  }
+    
+  } 
 
-  .logo {
-    width: 15%;
-    transform: translate(115%);
-    margin-top: 100px;
-  }
-
-  .logo3 {
-    width: 500px;
-    transform: translate(15%);
-    margin-top: 80px;
-  }
-
-  header {
+  .imgMain{
     display: flex;
+    max-width: 55%;
+    float: left;
+    margin-top: 30px;
+    margin-left: 2%;
   }
 
-  section {
-    display: flex;
-    width: 50%;
-    flex-direction: column;
+ .logo{
+    width: 20%;
   }
 
-  h1 {
-    grid-column: 2/12;
-    font-family: "Times New Roman", sans-serif;
-    font-size: 2.5em;
-    margin-top: 10px;
-    color: #443728;
-    text-align: center;
+  h1{
+    font-size: 40px;
   }
 
-  h2 {
-    grid-column: 2/12;
-    font-family: "Times New Roman", sans-serif;
-    font-size: 2em;
-    margin-top: 5px;
-    color: #443728;
-    text-align: center;
-    margin-bottom: 10px;
+  p{
+    font-size: 20px;
   }
 
-  .section2 {
-    display: flex;
-  flex-direction: column;
-  border: 1px solid rgb(248, 248, 248);
-  border-radius: 7px;
-  padding: 7%;
-  margin: 7% 7% 7% 20%;
-  box-shadow: 0px 0px 5px 0px orangered;
-  height: 100px;
-  width: 300px
+  .section2{
+    margin-top: 8px;
+    max-width: 20%;
+    align-items: center;
+    height: 18px;
+    margin-left: 63%;
+    padding: auto;
   }
+
   .buttonsPrincipals {
     width: 200px;
-    height: 36px;
-    border-radius: 8px;
-    border: 1px solid rgb(248, 248, 248);
-    box-shadow: 0px 0px 5px 0px orangered;
-    background-color: rgba(251, 253, 253, 0.709);
-    margin: 30px 5px px 300px;
-    font-size: 1.3em;
-    color: #443728;
   }
 
-  label {
-    grid-column: 2/12;
-    font-size: 1.5em;
-    margin-top: 8px;
-    margin-bottom: 10px;
-    color: #443728;
-    text-align: left;
-    margin-left: 100px;
-    font-weight: bold;
-    font-style: italic;
+  .googleSignIn {
+    width: 200px;
   }
 
-  input {
-    border-radius: 5px;
-    height: 4vh;
-    background-color: rgba(251, 253, 253, 0.709);
-    width: 300px;
-    text-align: left;
-    padding: 4px;
-    margin-left: 100px;
-    color: #443728;
-    font-size: 1.3em;
-    font-family: "Times New Roman", sans-serif;
+  /* Registrarse e Inicio de secion*/
+
+  .logo3{
+    width: 95%;
   }
 
-  input::placeholder {
-    color: rgb(179, 176, 176);
-  }
 }

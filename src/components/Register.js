@@ -7,7 +7,7 @@ export const Register = (onNavigate) => {
   const HomeDiv = document.createElement('div');
 
   const viewRegister = `
-  <div><img src = "./img/tarta.jpg" class = "imgMain" alt = "imgen de Tarta - Cocinemos Juntos "></div>
+  <picture><img src = "./img/tarta.jpg" class = "imgMain" alt = "imgen de Tarta - Cocinemos Juntos "></picture>
   <section class = "container">
     <img class = "logo3" src = "./img/Logo3.png">
     <h2>Registrarse</h2>

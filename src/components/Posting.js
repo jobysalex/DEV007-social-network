@@ -5,7 +5,7 @@ import {
   getDoc,
   updateDoc as updateDocument,
   onSnapshot,
-  query
+  query,
 } from 'firebase/firestore';
 // import { container } from 'webpack';
 import {
@@ -24,17 +24,17 @@ export const Posting = (onNavigate) => {
 
   const viewPosting = `
   <div>   
-    <div><img src = "./img/Cocinar.jpg" class = "imgMain" alt = "Imagen Cocinando - Cocinemos Juntos "></div>     
+    <picture><img src = "./img/Cocinar.jpg" class = "imgMain" alt = "Imagen Cocinando - Cocinemos Juntos "></picture> 
   </div>
     <section class = "container" id = "container" >
       <img class = "logo3" src = "./img/Logo3.png">
       <p>¡Inspirarás a otros con tu receta!</p>
-      <h4>Nombre de la Receta:</h4>
+      <h4 class = "indication" >Nombre de la Receta:</h4>
       <textarea id = "textTitle" class = "textTitle"  placeholder = "Nombre de la Receta" >  </textarea>
       <h4>Descripción:</h4>
       <textarea id = "textPost" class = "textPost" placeholder = "Comparte tu obra maestra culinaria:ingredientes, pasos, tips." >  </textarea>
       <button type ="submit" class = "buttonsPrincipals" id = "buttonPost"> Publicar </button>
-      <p class = "disfruta" >¡Descubre deliciosas recetas!<p>
+      <p class = "disfruta">¡Descubre deliciosas recetas!<p>
    </section>
    <section class = "containerShowPost" id = "containerShowPost" >
    </section>
@@ -43,12 +43,12 @@ export const Posting = (onNavigate) => {
   HomeDiv.innerHTML = viewPosting;
 
   // creamos la seccion 2
-  const section2 = document.createElement('section');
-  section2.classList.add('section2');
+  const section3 = document.createElement('section');
+  section3.classList.add('section3');
 
   // Boton Home
   const buttonHome = document.createElement('button');
-  buttonHome.classList.add('buttonsPrincipals');
+  buttonHome.classList.add('buttonsPrincipalsPosting');
   buttonHome.textContent = 'Cerrar Sesión';
   buttonHome.addEventListener('click', () => onNavigate('/'));
 
@@ -67,14 +67,9 @@ export const Posting = (onNavigate) => {
 
   // Mostrar Post
   const containerShowPost = HomeDiv.querySelector('#containerShowPost');
-  
-
-  
-  const q = query(collection(db, "post"))
+  const q = query(collection(db, 'post'));
   onSnapshot(q, (querySnapshot) => {
     containerShowPost.innerHTML = '';
-    
-    
     querySnapshot.forEach((doc) => {
       // console.log(doc.data());
       const postDiv = document.createElement('div');
@@ -82,8 +77,8 @@ export const Posting = (onNavigate) => {
       postDiv.innerHTML = `
       <div class=verpost >
       <h3>${doc.data().title}</h3>
-      <p>${doc.data().post}</p>
-      <p>${doc.data().user}</p>
+      <p class = "Receta" >${doc.data().post}</p>
+      <p class = "Autor">${doc.data().user}</p>
       
       <div class = Botones>
         <button class="btnDelete" data-id='${doc.id}'>
@@ -104,7 +99,7 @@ export const Posting = (onNavigate) => {
     });
 
     const btnsDelete = containerShowPost.querySelectorAll('.btnDelete');
-    console.log(btnsDelete)
+    console.log(btnsDelete);
     btnsDelete.forEach((btn) => {
       btn.addEventListener('click', (e) => {
         // console.log(e.target.dataset.id);
@@ -114,76 +109,69 @@ export const Posting = (onNavigate) => {
     });
 
     const btnsEdit = containerShowPost.querySelectorAll('.btnEdit');
-  btnsEdit.forEach((btn) => {
-    btn.addEventListener('click', async (e) => {
-      try {
-        // eslint-disable-next-line no-shadow
-        const doc = await editarPost(e.target.dataset.id);
-        const receta = doc.data();
-        console.log(receta);
-        textTitle.value = receta.title; // aqui no hacia falta llamar conteiner porque ya en
-        textPost.value = receta.post; // las lineas 36 y 37 hacemos el queryselector
-        // ojo el if y el else se hace en el boton de publicar porque es el momento
-        // hay la escucha para publicar el texto ya editado
-        // comente el try y el chat ya que se usará mas adelante
-        // continuar en el minuto 1:05:36 en el video. Chao jajajaja
-        editPost = true;
-        guardarId = doc.id;
-
-        containerPost.buttonPost.innertext = 'Update';
-        // console.log(error);
-      } catch (error) {
-        // console.log(error);
-      }
-
-      console.log(editPost)
-    });
-  });
-
-  // Funcion Likes
-  // Funcion Likes
-  const btnslikes = containerShowPost.querySelectorAll('.btnLikesCount');
-  btnslikes.forEach((btn) => {
-    const likesCount = btn.querySelector('.likesCount');
-    btn.addEventListener('click', async (e) => {
-      const likedPostId = e.target.dataset.id;
-      const userLikesPost = obtenerCorreoUsuario();
-
-      if (userLikesPost) {
-        const postDocRef = doc(db, 'post', likedPostId);
-        const postSnapshot = await getDoc(postDocRef);
-
-        if (postSnapshot.exists()) {
-          const postLikes = postSnapshot.data().like || [];
-          const userIndex = postLikes.indexOf(userLikesPost);
-
-          if (userIndex > -1) {
-            postLikes.splice(userIndex, 1); // Eliminar el nombre de usuario del arreglo de likes
-          } else {
-            postLikes.push(userLikesPost); // Agregar el nombre de usuario al arreglo de likes
-          }
-
-          await updateDocument(postDocRef, { like: postLikes });
-          console.log('Likes Count:', postLikes.length);
-          const numDeLikes = postLikes.length;
-          likesCount.innerText = numDeLikes.toString();
-        } else {
-          console.log('El post no existe.');
+    btnsEdit.forEach((btn) => {
+      btn.addEventListener('click', async (e) => {
+        try {
+          // eslint-disable-next-line no-shadow
+          const doc = await editarPost(e.target.dataset.id);
+          const receta = doc.data();
+          console.log(receta);
+          textTitle.value = receta.title;
+          textPost.value = receta.post;
+          editPost = true;
+          guardarId = doc.id;
+          containerPost.buttonPost.innertext = 'Update';
+          // console.log(error);
+        } catch (error) {
+          // console.log(error);
         }
-      } else {
-        console.log('No se puede obtener el correo electrónico del usuario.');
-      }
+
+        console.log(editPost);
+      });
     });
-  });
-  
+
+    // Funcion Likes
+    const btnslikes = containerShowPost.querySelectorAll('.btnLikesCount');
+    btnslikes.forEach((btn) => {
+      const likesCount = btn.querySelector('.likesCount');
+      btn.addEventListener('click', async (e) => {
+        const likedPostId = e.target.dataset.id;
+        const userLikesPost = obtenerCorreoUsuario();
+
+        if (userLikesPost) {
+          const postDocRef = doc(db, 'post', likedPostId);
+          const postSnapshot = await getDoc(postDocRef);
+
+          if (postSnapshot.exists()) {
+            const postLikes = postSnapshot.data().like || [];
+            const userIndex = postLikes.indexOf(userLikesPost);
+
+            if (userIndex > -1) {
+              postLikes.splice(userIndex, 1); // Eliminar el nombre de usuario del arreglo de likes
+            } else {
+              postLikes.push(userLikesPost); // Agregar el nombre de usuario al arreglo de likes
+            }
+
+            await updateDocument(postDocRef, { like: postLikes });
+            console.log('Likes Count:', postLikes.length);
+            const numDeLikes = postLikes.length;
+            likesCount.innerText = numDeLikes.toString();
+          } else {
+            console.log('El post no existe.');
+          }
+        } else {
+          console.log('No se puede obtener el correo electrónico del usuario.');
+        }
+      });
+    });
   });
 
   // Boton Publicar
   buttonPost.addEventListener('click', async (e) => {
     e.preventDefault();
-    // console.log(textTitle.value, textPost.value);
+    console.log(textTitle.value, textPost.value);
     try {
-      console.log(textUser)
+      console.log(textUser);
       if (!editPost) {
         crearPost(textTitle.value, textPost.value);
         // console.log('updating');
@@ -208,23 +196,9 @@ export const Posting = (onNavigate) => {
     }
   });
 
-  // eslint-disable-next-line no-shadow
-  
-
-  // Borrar Post
- 
-
-  // Editar Post
-
-  
-
-  
-
-  
-
-  HomeDiv.appendChild(section2);
+  HomeDiv.appendChild(section3);
   // section2.appendChild(buttonReadRecipe);
-  section2.appendChild(buttonHome);
+  section3.appendChild(buttonHome);
 
   return HomeDiv;
 };
