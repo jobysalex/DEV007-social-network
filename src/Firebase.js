@@ -40,7 +40,7 @@ export function crearUsuarioConCorreoYContraseña(email, password) {
   return createUserWithEmailAndPassword(auth, email, password);
 }
 
-// funcion iniciar secion con mail y password
+// funcion iniciar sesion con mail y password
 export function iniciarsesion(email, password) {
   return signInWithEmailAndPassword(auth, email, password);
 }
@@ -96,6 +96,7 @@ ShowPost.forEach((doc) => {
 export const ShowPost = async () => {
   const querySnapshot = await getDocs(collection(db, 'post'));
   const posts = [];
+  // eslint-disable-next-line no-shadow
   querySnapshot.forEach((doc) => {
     posts.push({
       id: doc.id,
