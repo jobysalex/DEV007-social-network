@@ -22,32 +22,34 @@ export const Posting = (onNavigate) => {
   const HomeDiv = document.createElement('div');
 
   const viewPosting = `
-    <div>   
-    <div><img src = './img/Cocinar.jpg' class = 'imgMain' alt = 'Imagen Cocinando - Cocinemos Juntos'></div>     
-    </div>
-    <section class = 'container' id = 'container'>
-      <img class = 'logo3' src = './img/Logo3.png'>
+
+  <div>   
+    <picture><img src = "./img/Cocinar.jpg" class = "imgMain" alt = "Imagen Cocinando - Cocinemos Juntos "></picture> 
+  </div>
+    <section class = "container" id = "container" >
+      <img class = "logo3" src = "./img/Logo3.png">
       <p>¡Inspirarás a otros con tu receta!</p>
-      <h4>Nombre de la Receta:</h4>
-      <textarea id = 'textTitle' class = 'textTitle placeholder = 'Nombre de la Receta'></textarea>
+      <h4 class = "indication" >Nombre de la Receta:</h4>
+      <textarea id = "textTitle" class = "textTitle"  placeholder = "Nombre de la Receta" >  </textarea>
       <h4>Descripción:</h4>
-      <textarea id = 'textPost' class = 'textPost' placeholder = 'Comparte tu obra maestra culinaria:ingredientes, pasos, tips.'></textarea>
-      <button type = 'submit' class = 'buttonsPrincipals' id = 'buttonPost'> Publicar </button>
-      <p class = 'disfruta'>¡Descubre deliciosas recetas!<p>
-    </section>
-    <section class = 'containerShowPost' id = 'containerShowPost'>
-    </section>
-    `;
+      <textarea id = "textPost" class = "textPost" placeholder = "Comparte tu obra maestra culinaria:ingredientes, pasos, tips." >  </textarea>
+      <button type ="submit" class = "buttonsPrincipals" id = "buttonPost"> Publicar </button>
+      <p class = "disfruta">¡Descubre deliciosas recetas!<p>
+   </section>
+   <section class = "containerShowPost" id = "containerShowPost" >
+   </section>
+  `;
+
 
   HomeDiv.innerHTML = viewPosting;
 
   // creamos la seccion 2
-  const section2 = document.createElement('section');
-  section2.classList.add('section2');
+  const section3 = document.createElement('section');
+  section3.classList.add('section3');
 
   // Boton Home
   const buttonHome = document.createElement('button');
-  buttonHome.classList.add('buttonsPrincipals');
+  buttonHome.classList.add('buttonsPrincipalsPosting');
   buttonHome.textContent = 'Cerrar Sesión';
   buttonHome.addEventListener('click', () => onNavigate('/'));
 
@@ -68,12 +70,10 @@ export const Posting = (onNavigate) => {
   // Mostrar Post
   const containerShowPost = HomeDiv.querySelector('#containerShowPost');
 
-  // aqui evitamos recargar la página cada vez que se actualiza algo
   const q = query(collection(db, 'post'));
   onSnapshot(q, (querySnapshot) => {
     containerShowPost.innerHTML = '';
 
-    // eslint-disable-next-line no-shadow
     querySnapshot.forEach((doc) => {
       // console.log(doc.data());
       const postDiv = document.createElement('div');
@@ -81,8 +81,11 @@ export const Posting = (onNavigate) => {
       postDiv.innerHTML = `
       <div class=verpost >
       <h3>${doc.data().title}</h3>
-      <p>${doc.data().post}</p>
-      <p>${doc.data().user}</p>
+
+      <p class = "Receta" >${doc.data().post}</p>
+      <p class = "Autor">${doc.data().user}</p>
+      
+
       <div class = Botones>
         <button class='btnDelete' data-id='${doc.id}'>
         🗑 Borrar
@@ -131,6 +134,7 @@ export const Posting = (onNavigate) => {
         } catch (error) {
           // console.log(error);
         }
+
         console.log(editPost);
       });
     });
@@ -174,7 +178,7 @@ export const Posting = (onNavigate) => {
   // Boton Publicar
   buttonPost.addEventListener('click', async (e) => {
     e.preventDefault();
-    // console.log(textTitle.value, textPost.value);
+    console.log(textTitle.value, textPost.value);
     try {
       console.log(textUser);
       if (!editPost) {
@@ -205,10 +209,10 @@ export const Posting = (onNavigate) => {
     });
   }
 
-  showPosts();
+  HomeDiv.appendChild(section3);
+  // section2.appendChild(buttonReadRecipe);
+  section3.appendChild(buttonHome);
 
-  HomeDiv.appendChild(section2);
-  section2.appendChild(buttonHome);
 
   return HomeDiv;
 };
