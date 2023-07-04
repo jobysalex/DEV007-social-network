@@ -2,7 +2,7 @@
 
 import {
   createUserWithEmailAndPassword,
-  // getAuth,
+  getAuth,
   signInWithEmailAndPassword,
 }
   from 'firebase/auth';
@@ -20,6 +20,7 @@ import {
   db,
   editarPost,
   editarPosts,
+  iniciarConGoogle,
   iniciarsesion,
   obtenerCorreoUsuario,
 } from '../src/Firebase';
@@ -43,6 +44,17 @@ describe('obtenerCorreoUsuario', () => {
     // });
   });
 });
+
+describe('Funcion de iniciarConGoogle', () => {
+  it('debería ser una función', () => {
+    expect(typeof iniciarConGoogle).toBe('function');
+  });
+});
+/* it('Deberia llamar a la funcion signInWithPopup', async () => {
+    await iniciarConGoogle();
+    expect(signInWithPopup).toHaveBeenCalled();
+  });
+}); */
 
 jest.mock('firebase/auth');
 jest.mock('firebase/firestore');
@@ -80,18 +92,20 @@ it('Debería llamar a la función createUserWithEmailAndPassword cuando esta se 
   expect(response).toEqual({ email: 'analiaklein@gmail.com', contraseña: '123456' });
 });
 /* it('Debería llamar a la función GoogleAuthProvider cuando esta se ejecuta', async () => {
-  GoogleAuthProvider.mockReturnValueOnce();
+ GoogleAuthProvider.mockReturnValueOnce();
   const response = await iniciarConGoogle();
   expect(response.iniciarConGoogle).toHaveBeenCalled();
 }); */
 
 it('Debería llamar a la función crearPost cuando esta se ejecuta', async () => {
+  getAuth.mockReturnValueOnce('test');
   const response = await crearPost('titulo', 'texto');
   expect(response).toEqual({
     title: 'titulo',
     post: 'texto',
   });
 });
+
 /* it('debería llamar a la función', async () => {
   addDoc.mockReturnValueOnce(crearPost);
   // eslint-disable-next-line jest/valid-expect
@@ -116,3 +130,11 @@ it('deberia llamar a la función getDocs cuando esta se ejecuta', async () => {
   const response = await editarPosts(collection.post);
   expect(response).toBe(collection.post);
 });
+
+/* it('Deberia devolver los datos del usuario', async () => {
+  signInWithPopup.mockReturnValueOnce({ user: 'Analia Klein' });
+  const provider = GoogleAuthProvider.mockReturnValueOnce({});
+  console.log(provider);
+  const response = await iniciarConGoogle();
+  expect(response.user).toBe('Analia Klein');
+}); */
