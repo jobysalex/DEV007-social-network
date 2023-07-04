@@ -6,12 +6,20 @@ import {
   signInWithEmailAndPassword,
 }
   from 'firebase/auth';
-// import { addDoc } from 'firebase/firestore';
-import { addDoc } from 'firebase/firestore';
 import {
+  collection,
+  deleteDoc,
+  doc,
+  getDoc,
+} from 'firebase/firestore';
+
+import {
+  borrarDoc,
   crearPost,
-  // auth,
   crearUsuarioConCorreoYContraseña,
+  db,
+  editarPost,
+  editarPosts,
   iniciarsesion,
   obtenerCorreoUsuario,
 } from '../src/Firebase';
@@ -56,7 +64,7 @@ it('Debería llamar a la función signInWithEmailAndPassword cuando esta se ejec
 it('Debería llamar a la funcion.', async () => {
   signInWithEmailAndPassword.mockReturnValueOnce({ iniciarsesion: 'analiaklein@gmail.com' });
   const response = await iniciarsesion('analiaklein@gmail.com', '123456');
-  console.log(response);
+  // console.log(response);
   expect(response.iniciarsesion).toBe('analiaklein@gmail.com');
 });
 
@@ -78,18 +86,10 @@ it('Debería llamar a la función createUserWithEmailAndPassword cuando esta se 
 }); */
 
 it('Debería llamar a la función crearPost cuando esta se ejecuta', async () => {
-  addDoc.mockReturnValueOnce({
-    title: 'titulo',
-    post: 'texto',
-    user: 'email',
-    like: '',
-  });
-  const response = crearPost('titulo', 'texto', 'email', '');
+  const response = await crearPost('titulo', 'texto');
   expect(response).toEqual({
     title: 'titulo',
     post: 'texto',
-    user: 'email',
-    like: '',
   });
 });
 /* it('debería llamar a la función', async () => {
@@ -101,3 +101,18 @@ it('Debería llamar a la función crearPost cuando esta se ejecuta', async () =>
     },
   });
 }); */
+it('deberia llamar a la función deleteDoc cuando esta se ejecuta', async () => {
+  deleteDoc.mockReturnValueOnce(doc(db, 'post'));
+  const response = await borrarDoc(doc.id);
+  expect(response).toBe(doc.id);
+});
+it('deberia llamar a la función getDoc cuando esta se ejecuta', async () => {
+  getDoc.mockReturnValueOnce(doc(db, 'post'));
+  const response = await editarPost(doc.id);
+  expect(response).toBe(doc.id);
+});
+it('deberia llamar a la función getDocs cuando esta se ejecuta', async () => {
+  getDoc.mockReturnValueOnce(collection(db, 'post'));
+  const response = await editarPosts(collection.post);
+  expect(response).toBe(collection.post);
+});

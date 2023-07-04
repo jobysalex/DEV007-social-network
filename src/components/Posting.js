@@ -9,7 +9,7 @@ import {
 } from 'firebase/firestore';
 import {
   crearPost,
-  ShowPost,
+  // ShowPost,
   borrarDoc,
   editarPost,
   actualizarPost,
@@ -39,7 +39,6 @@ export const Posting = (onNavigate) => {
    <section class = "containerShowPost" id = "containerShowPost" >
    </section>
   `;
-
 
   HomeDiv.innerHTML = viewPosting;
 
@@ -74,27 +73,27 @@ export const Posting = (onNavigate) => {
   onSnapshot(q, (querySnapshot) => {
     containerShowPost.innerHTML = '';
 
-    querySnapshot.forEach((doc) => {
+    querySnapshot.forEach((post) => {
       // console.log(doc.data());
       const postDiv = document.createElement('div');
       postDiv.className = 'clasePost';
       postDiv.innerHTML = `
       <div class=verpost >
-      <h3>${doc.data().title}</h3>
+      <h3>${post.data().title}</h3>
 
-      <p class = "Receta" >${doc.data().post}</p>
-      <p class = "Autor">${doc.data().user}</p>
+      <p class = "Receta" >${post.data().post}</p>
+      <p class = "Autor">${post.data().user}</p>
       
 
       <div class = Botones>
-        <button class='btnDelete' data-id='${doc.id}'>
+        <button class='btnDelete' data-id='${post.id}'>
         🗑 Borrar
         </button>
-        <button class= 'btnEdit' data-id='${doc.id}'>
+        <button class= 'btnEdit' data-id='${post.id}'>
           🖉 Editar
         </button>
-        <button class= 'btnLikes btnLikesCount' data-id='${doc.id}'>
-        <span class= 'likesCount'>${doc.data().like.length}</span>
+        <button class= 'btnLikes btnLikesCount' data-id='${post.id}'>
+        <span class= 'likesCount'>${post.data().like.length}</span>
         &#128151 
         Likes 
         </button>
@@ -202,17 +201,16 @@ export const Posting = (onNavigate) => {
       console.log(error);
     }
   });
-  async function showPosts() {
+  /* async function showPosts() {
     const posts = await ShowPost();
     posts.forEach((post) => {
       console.log(post.id, ' => ', post.data);
     });
-  }
+  } */
 
   HomeDiv.appendChild(section3);
   // section2.appendChild(buttonReadRecipe);
   section3.appendChild(buttonHome);
-
 
   return HomeDiv;
 };

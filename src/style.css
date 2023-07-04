@@ -16,7 +16,7 @@ time, mark, audio, video {
 	padding: 0;
 	border: 0;
 	font-size: 100%;
-	font: inherit;
+	/* font: inherit; */
 	vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
@@ -45,12 +45,6 @@ table {
 }
 /*----------------------*/
 
-/* HOME*/
-body {
-  background-color:  #F7EDE9;
-  font-family: 'Times New Roman', sans-serif;
-}
-
 .imgMain {
   max-width: 100%;
 }
@@ -60,7 +54,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 7%;
+  /*padding: 7%; */
   margin: 5px 5px 0px 5px;
   padding: 8px 15px 0px 15px;
 }
@@ -201,7 +195,6 @@ input::placeholder {
   height: 280px;
   margin: 5px 5px 0px 5px;
   padding: 5px 8px 5px 8px;
-  height: 280px;
   overflow-y: scroll;
 }
 .clasePost {
