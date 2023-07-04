@@ -57,7 +57,6 @@ export const db = getFirestore(app);
 // atrapar el usuario
 export function obtenerCorreoUsuario() {
   const user = auth.currentUser;
-  // console.log(user.email);
   if (user) {
     return user.email;
   }
@@ -65,15 +64,6 @@ export function obtenerCorreoUsuario() {
 }
 
 // Crear Post
-// export function crearPost(titulo,texto, email) {
-//   const docRef = addDoc(collection(db, 'post'), {
-//     title: titulo,
-//     post: texto,
-//     user: email,
-//    // like: [],
-//   });
-//   console.log('Document written with ID: ', docRef.id);
-// }
 export function crearPost(titulo, texto) {
   const email = obtenerCorreoUsuario();
   if (email) {
