@@ -291,7 +291,7 @@ h3 {
   } 
 
   html {
-    margin-top: 250px;
+    margin-top: 8%;
     margin-left: 2%;
     margin-right: 2%;
     border: 1px solid rgb(248, 248, 248);
@@ -349,8 +349,32 @@ h3 {
 
   /* Registrarse e Inicio de secion*/
 
+  .imgMain1{
+    display: flex;
+    max-width: 55%;
+    float: left;
+    margin-top: 140px;
+    margin-left: 2%;
+  }  
+  
   .logo3{
     width: 95%;
   }
 
+  /*Posting*/
+
+  .container {
+    height: 900px;
+  }
+
+  .containerShowPost {
+  height: 300px;
+  }
+
+  h4 {
+    margin-top: 20px;
+  }
+  .section3{
+  margin: 0% 0% 5% 20%;
+  }
 }
