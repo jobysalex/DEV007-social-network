@@ -4,6 +4,8 @@ import {
   createUserWithEmailAndPassword,
   getAuth,
   signInWithEmailAndPassword,
+  signInWithPopup,
+  GoogleAuthProvider,
 }
   from 'firebase/auth';
 import {
@@ -11,6 +13,7 @@ import {
   deleteDoc,
   doc,
   getDoc,
+  getDocs,
 } from 'firebase/firestore';
 
 import {
@@ -24,6 +27,10 @@ import {
   iniciarsesion,
   obtenerCorreoUsuario,
 } from '../src/Firebase';
+
+// import {
+//   clearErrorMessage,
+// } from '../src/components/Login.js';
 
 describe('iniciarsesion', () => {
   it('Debería ser una función', () => {
@@ -50,11 +57,30 @@ describe('Funcion de iniciarConGoogle', () => {
     expect(typeof iniciarConGoogle).toBe('function');
   });
 });
-/* it('Deberia llamar a la funcion signInWithPopup', async () => {
-    await iniciarConGoogle();
-    expect(signInWithPopup).toHaveBeenCalled();
+it('Deberia llamar a la funcion signInWithPopup', async () => {
+  await iniciarConGoogle();
+  expect(signInWithPopup).toHaveBeenCalled();
+});
+
+describe('getDoc', () => {
+  it('Debería llamarla', () => {
+    expect(typeof editarPost).toBe('function');
   });
-}); */
+});
+
+describe('getDocs', () => {
+  it('Debería llamarla', async () => {
+    await editarPosts();
+    expect(getDocs).toHaveBeenCalled();
+  });
+});
+
+// describe('deberia quitar el mensaje de error', () => {
+//   it('deberia quitar', (e) => {
+//     clearErrorMessage(e.target.tagName === 'INPUT');
+//     expect(clearErrorMessage).toBe('');
+//   });
+// });
 
 jest.mock('firebase/auth');
 jest.mock('firebase/firestore');
@@ -115,6 +141,7 @@ it('Debería llamar a la función crearPost cuando esta se ejecuta', async () =>
     },
   });
 }); */
+
 it('deberia llamar a la función deleteDoc cuando esta se ejecuta', async () => {
   deleteDoc.mockReturnValueOnce(doc(db, 'post'));
   const response = await borrarDoc(doc.id);
@@ -131,10 +158,10 @@ it('deberia llamar a la función getDocs cuando esta se ejecuta', async () => {
   expect(response).toBe(collection.post);
 });
 
-/* it('Deberia devolver los datos del usuario', async () => {
+it('Deberia devolver los datos del usuario', async () => {
   signInWithPopup.mockReturnValueOnce({ user: 'Analia Klein' });
   const provider = GoogleAuthProvider.mockReturnValueOnce({});
   console.log(provider);
   const response = await iniciarConGoogle();
   expect(response.user).toBe('Analia Klein');
-}); */
+});
