@@ -45,7 +45,10 @@ https://trello.com/b/gOSbciUH/social-network-05
 *Encuesta Incial a Ususarios*
 Para llegar a este tema, se realizó una tormenta de ideas. Posterirmente, para darle forma a la red social se diseñó un cuestionario que nos ayudó a iniciar el proceso de diseño de los prototipo de baja y de alta. a continuacion presentamos los resultados de dicho cuestionario:
 
-COLOCAR FOTOS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+![](./ImagenReadme/Encuesta1.png)
+
+
+![](./ImagenReadme/Encuesta2.png)
 
 *Perfil de usuario*
 
@@ -107,17 +110,29 @@ A continuacion una vista del diseño de alta para pantallas de computadoras de e
 ![](./ImagenReadme/ProtAltaDesktop.png).
 
 #### Desarrollo del Proyecto
-El para el desarrollo del proyecto y siguiendo la guía enregada por laboratoria se diseñó Fis¿rt Mobile para luego hacerlo responsive a otros tamaños de pantalla.
+El para el desarrollo del proyecto y siguiendo la guía enregada por laboratoria se diseñó First Mobile para luego hacerlo responsive a otros tamaños de pantalla.
 
-#### test de Usuarios.
-FOTOS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+#### Test de Usuarios.
+
 
 #### Pruebas unitarias (unit tests)
-FOTOS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+Las pruebas unitarias contienen 15 test de funciones del código
 
 ## 5. Boilerplate
 El boilerplate contiene una estructura de archivos:
-FOTOS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+![](./ImagenReadme/Carpetas.png).
+
+Componets: contiene todo el código de cada una de las historias de usuarios. Las pantallas de:
+   * Home.js: dónde se presenta la aplicacion al usuario, en ella puede decidir si ir a la pantalla inciciar sesión o a la de registrarse y como tercera opcion acceder directamente con google.
+   * Resgiter.js: pantala para registro con correo y contraseña.
+   * Login.js: pantalla para dar inicio de sesión e ingresar a la aplicación.
+   * Posting.js: dónde se encuentra el corazón de la plicacion en ella puede el usuario consutar recetas puplicadas y dar likes. asi mismo puede publicar su propia receta, borrarla o editarla.
+
+Firebase.js: contiene toda la logica de conexcion con el servicio de firebase y firestore que interactua con la funcionalidad de la aplicación.
+
+Main.js: en la cual están todos los lonks o conexiones entre las distintas vistas SPA.
+
+Index.HTLM:contiene el esqueleto general de la aplicación.
 
 ## 6. Objetivos de aprendizaje
 Como parte del proceso de aprendizaje Laboratoria establece los siguientes items:

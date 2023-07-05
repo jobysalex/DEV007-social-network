@@ -26,14 +26,14 @@ export const Posting = (onNavigate) => {
   <div>   
     <picture><img src = "./img/Cocinar.jpg" class = "imgMain" alt = "Imagen Cocinando - Cocinemos Juntos "></picture> 
   </div>
-    <section class = "container" id = "container" >
+    <section class = "containerPosting" id = "container" >
       <img class = "logo3" src = "./img/Logo3.png">
-      <p>¡Inspirarás a otros con tu receta!</p>
+      <p class = "inspiration" >¡Inspirarás a otros con tu receta!</p>
       <h4 class = "indication" >Nombre de la Receta:</h4>
       <textarea id = "textTitle" class = "textTitle"  placeholder = "Nombre de la Receta" >  </textarea>
       <h4>Descripción:</h4>
       <textarea id = "textPost" class = "textPost" placeholder = "Comparte tu obra maestra culinaria:ingredientes, pasos, tips." >  </textarea>
-      <button type ="submit" class = "buttonsPrincipals" id = "buttonPost"> Publicar </button>
+      <button type ="submit" class = "buttonsPrincipalsPost" id = "buttonPost"> Publicar </button>
       <p class = "disfruta">¡Descubre deliciosas recetas!<p>
    </section>
    <section class = "containerShowPost" id = "containerShowPost" >
