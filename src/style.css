@@ -25,9 +25,6 @@ footer, header, hgroup, menu, nav, section {
 	display: block;
 }
 
-body {
-	line-height: 1;
-}
 ol, ul {
 	list-style: none;
 }
@@ -43,10 +40,22 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+
 /*----------------------*/
 
+ /*HOME*/
+ body {
+  background-color:  #F7EDE9;
+  font-family: 'Times New Roman', sans-serif;
+  margin: 3%;
+  border: 1px solid rgb(248, 248, 248);
+  border-radius: 7px;
+  box-shadow: 0px 0px 5px 0px orangered;
+}
+
 .imgMain {
-  max-width: 100%;
+  max-width: 99.8%;
+  border-radius: 7px;
 }
 
 .container {
@@ -98,7 +107,6 @@ p {
   border-radius: 8px;
   border: 1px solid orangered; 
   background-color:  rgb(248, 248, 248);
-  /*background-color: rgba(251, 253, 253, 0.709);*/
   box-shadow: 0 0 5px orangered; 
   font-size: 1.3em;
   color: #443728;
@@ -128,7 +136,7 @@ p {
 /*Registrarse / Inciciar Sesión*/
 
 .logo3 { 
-  width: 110%;
+  width: 100%;
 }
 
 h2 { 
@@ -161,13 +169,18 @@ input {
 
 /*Posting*/
 
+.inspiration{
+text-align: center;
+}
+
 h4 {
   font-size: 18px;
+  padding: 2%;
 }  
 
 .textTitle{
   display: flex;
-  width: 90%;
+  width: 88%;
   border-radius: 5px;
   padding: 3%;
   margin: 3%;
@@ -175,7 +188,7 @@ h4 {
 }
 .textPost {
   display: flex;
-  width: 90%;
+  width: 88%;
   border-radius: 8px;
   padding: 3%;
   margin: 3%;
@@ -184,6 +197,24 @@ h4 {
 
 input::placeholder {
   color:rgb(179, 176, 176);
+}
+
+.buttonsPrincipalsPost {
+  width: 270px;
+  height: 36px;
+  margin: 3%;
+  border-radius: 8px;
+  border: 1px solid orangered; 
+  background-color:  rgb(248, 248, 248);
+  box-shadow: 0 0 5px orangered; 
+  font-size: 1.3em;
+  color: #443728;
+  margin-left:15%;
+}  
+
+.disfruta{
+  text-align: center;
+  margin-top: 5px;
 }
 
  /*aqui dpnde se imprimen las recetas*/
@@ -274,14 +305,44 @@ h3 {
     border: 1px solid rgb(248, 248, 248);
     border-radius: 7px;
     padding: 2%;
-    margin: 2% 5% 8% 30%;
+    margin: 4% 5% 4% 30%;
     box-shadow: 0px 0px 5px 0px orangered;
     width: 150px;
     height: 20px;    
   }
 
-/* Tablets, Ipads (portrait)
-@media (min-width: 768px) and (max-width: 1024px) { */
+/* Tablets, Ipads (portrait)*/
+@media (min-width: 768px) and (max-width: 1024px) { 
+  .buttonsPrincipalsPost {
+    display: flex;
+    float: center;
+    width: 270px;
+    height: 36px;
+    border-radius: 8px;
+    border: 1px solid orangered; 
+    background-color:  rgb(248, 248, 248);
+    box-shadow: 0 0 5px orangered; 
+    font-size: 1.3em;
+    color: #443728;
+    margin-left:50px;
+    margin-top: 5%;
+    margin-bottom: 8%;
+  } 
+  .section3 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border: 1px solid rgb(248, 248, 248);
+    border-radius: 7px;
+    padding: 2%;
+    
+    box-shadow: 0px 0px 5px 0px orangered;
+    width: 150px;
+    height: 20px;    
+  }
+
+}
 
 /* Inicio Laptops, Desktops*/
 @media (min-width: 1025px) and (max-width: 1280px) {
@@ -291,7 +352,7 @@ h3 {
   } 
 
   html {
-    margin-top: 8%;
+    margin-top: 15%;
     margin-left: 2%;
     margin-right: 2%;
     border: 1px solid rgb(248, 248, 248);
@@ -305,9 +366,7 @@ h3 {
     background-color:  #F7EDE9;
     font-family: 'Times New Roman', sans-serif;
     display: flex;
-    align-items: center;
-    
-    
+    align-items: center;    
   } 
 
   .imgMain{
@@ -362,19 +421,62 @@ h3 {
   }
 
   /*Posting*/
-
-  .container {
-    height: 900px;
+  .containerPosting {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 5px 5px 0px 5px;
+    padding: 8px 15px 0px 15px;
+    height: 400px;
+    overflow-y: scroll;
   }
-
+  .textTitle{
+    height: 60px;
+    margin: 0px;
+  }
+  .textPost {
+    height: 120px;
+    margin: 0%;
+  }
+   
   .containerShowPost {
-  height: 300px;
+  height: 600px;
   }
+
+  .buttonsPrincipalsPost {
+    width: 270px;
+    height: 36px;
+    border-radius: 8px;
+    border: 1px solid orangered; 
+    background-color:  rgb(248, 248, 248);
+    box-shadow: 0 0 5px orangered; 
+    font-size: 1.3em;
+    color: #443728;
+    margin-left:8%;
+    margin-top: 5%;
+    margin-bottom: 8%;
+  }  
 
   h4 {
-    margin-top: 20px;
+    margin: 0px;
+    text-align: left;
+    text-align: left;
+    }
+    
+    
+  .section3 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border: 1px solid rgb(248, 248, 248);
+    border-radius: 7px;
+    padding: 2%;
+    margin: 2% 5% 2% 40%;
+    box-shadow: 0px 0px 5px 0px orangered;
+    width: 150px;
+    height: 20px;    
   }
-  .section3{
-  margin: 0% 0% 5% 20%;
-  }
+
 }
