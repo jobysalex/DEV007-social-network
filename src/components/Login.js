@@ -1,10 +1,14 @@
 import { iniciarsesion } from '../Firebase.js';
+import Waffles from '../img/Waffles.jpg';
 
 export const Login = (onNavigate) => {
+  if (localStorage.getItem('user')) {
+    onNavigate('/posting');
+  }
   const HomeDiv = document.createElement('div');
   HomeDiv.setAttribute('class', 'home-div');
   const viewLogin = `
-  <div><img src = "./img/Waffles.jpg" class = "imgMain" alt = "imgen de Waffles - Cocinemos Juntos "></div>
+  <div><img src="${Waffles}" class = "imgMain" alt = "imgen de Waffles - Cocinemos Juntos "></div>
   <section class = "container">
     <img class = "logo3" src = "./img/Logo3.png">
     <h2>Inicia sesión</h2>
@@ -47,7 +51,8 @@ export const Login = (onNavigate) => {
   buttonPosting.addEventListener('click', (e) => {
     e.preventDefault();
     iniciarsesion(inputEmail.value, inputPassword.value)
-      .then(() => {
+      .then((res) => {
+        localStorage.setItem('user', res);
         onNavigate('/posting');
       })
       .catch((error) => {

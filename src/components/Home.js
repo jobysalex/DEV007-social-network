@@ -2,14 +2,17 @@ import {
   iniciarConGoogle,
 } from '../Firebase.js';
 
+import Vegetales from '../img/Vegetales.jpg';
+import Logo from '../img/Logo.png';
+import iconGoogle3 from '../img/iconGoogle3.jpg';
+
 export const Home = (onNavigate) => {
   const HomeDiv = document.createElement('div');
-
   const viewHome = `
 
-  <picture><img src = "./img/Vegetales.jpg" class = "imgMain" alt = "Imagen de Vegetales - Cocinemos Juntos "></picture>
+  <img src="${Vegetales}" class = "imgMain" alt = "Imagen de Vegetales - Cocinemos Juntos "></img>
   <section class = "container">
-    <img class = "logo" src = "./img/Logo.png">
+    <img class = "logo" src="${Logo}">
     <h1>¿Cocinamos Juntos?</h1>
     <p>¡Encuentra, comparte y crea deliciosas recetas mientras haces amigos y disfrutas de una experiencia culinaria única!</p>
   </section>
@@ -36,13 +39,14 @@ export const Home = (onNavigate) => {
   buttonGoogle.classList.add('googleSignIn');
   const imgGoogle = document.createElement('img');
   imgGoogle.classList.add('googleIcon');
-  imgGoogle.src = '../img/iconGoogle3.jpg';
+  imgGoogle.src = iconGoogle3;
   buttonGoogle.textContent = 'Acceder con Google';
   buttonGoogle.addEventListener('click', (e) => {
     e.preventDefault();
     iniciarConGoogle()
       .then((user) => {
         console.log(user);
+        localStorage.setItem('user', user);
         onNavigate('/posting');
       })
       .catch((error) => {
@@ -50,12 +54,6 @@ export const Home = (onNavigate) => {
       });
   });
 
-  // const buttonPosting = document.createElement('button');
-  // buttonPosting.classList.add('buttonsPrincipals');
-  // buttonPosting.textContent = 'Deliciosas Recetas';
-  // buttonPosting.addEventListener('click', () => onNavigate('/posting'));
-
-  // Declaracion de dependencias
   HomeDiv.appendChild(section2);
   section2.appendChild(buttonRegister);
   section2.appendChild(buttonLogin);

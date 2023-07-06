@@ -112,15 +112,36 @@ A continuacion una vista del diseño de alta para pantallas de computadoras de e
 #### Desarrollo del Proyecto
 El para el desarrollo del proyecto y siguiendo la guía enregada por laboratoria se diseñó First Mobile para luego hacerlo responsive a otros tamaños de pantalla.
 
+#### Code Review.
+
+El code review fue realizado en una sesión de una hora con el otro equipo de trabajo (equipo Social Network 16), de los cuales surgieron los siguientes comentarios:
+- [X] Los imagenes se recomienda ir dentro de etiquetas como piture y figure y las Imagenes van dentro de un contenedor.
+- [-] Los comentarios deberían de ir en Ingles. No fue incorporado ya que no todas manejamos el idioma.
+- [X] Eliminar código invalidado
+- [X] Eliminar console.log
+- [X] Unificar el uso de comillas
+- [X] Identación de cogido de HTLM que está dentro de JS
+- [X] Incluir el reseteo de CCs: Normalize o  reset
+- [X] Jerarquía en CCS es buena practica
+- [X] Si toda la pagina tiene el mismo tipo de letra declarar en el body
+- [X] Usar como medida de 100% máxima.
+- [-] No usar bold. será tomando en cuenta en futuros proyectos.
+
+
 #### Test de Usuarios.
 
 
 #### Pruebas unitarias (unit tests)
+
 Las pruebas unitarias contienen 15 test de funciones del código
 
 ## 5. Boilerplate
+
 El boilerplate contiene una estructura de archivos:
+
+
 ![](./ImagenReadme/Carpetas.png).
+
 
 Componets: contiene todo el código de cada una de las historias de usuarios. Las pantallas de:
    * Home.js: dónde se presenta la aplicacion al usuario, en ella puede decidir si ir a la pantalla inciciar sesión o a la de registrarse y como tercera opcion acceder directamente con google.

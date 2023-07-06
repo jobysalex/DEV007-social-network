@@ -18,13 +18,19 @@ import {
   auth,
 } from '../Firebase.js';
 
+import Cocinar from '../img/Cocinar.jpg';
+
 export const Posting = (onNavigate) => {
+  if (!localStorage.getItem('user')) {
+    onNavigate('/login');
+    return null;
+  }
   const HomeDiv = document.createElement('div');
 
   const viewPosting = `
 
   <div>   
-    <picture><img src = "./img/Cocinar.jpg" class = "imgMain" alt = "Imagen Cocinando - Cocinemos Juntos "></picture> 
+    <picture><img src="${Cocinar}" class = "imgMain" alt = "Imagen Cocinando - Cocinemos Juntos "></picture> 
   </div>
     <section class = "containerPosting" id = "container" >
       <img class = "logo3" src = "./img/Logo3.png">
@@ -50,7 +56,10 @@ export const Posting = (onNavigate) => {
   const buttonHome = document.createElement('button');
   buttonHome.classList.add('buttonsPrincipalsPosting');
   buttonHome.textContent = 'Cerrar Sesión';
-  buttonHome.addEventListener('click', () => onNavigate('/'));
+  buttonHome.addEventListener('click', () => {
+    localStorage.clear();
+    onNavigate('/');
+  });
 
   // Constante para atrapar el texto.
   const containerPost = HomeDiv.querySelector('#container');
@@ -80,11 +89,8 @@ export const Posting = (onNavigate) => {
       postDiv.innerHTML = `
       <div class=verpost >
       <h3>${post.data().title}</h3>
-
       <p class = "Receta" >${post.data().post}</p>
       <p class = "Autor">${post.data().user}</p>
-      
-
       <div class = Botones>
         <button class='btnDelete' data-id='${post.id}'>
         🗑 Borrar
@@ -201,12 +207,6 @@ export const Posting = (onNavigate) => {
       console.log(error);
     }
   });
-  /* async function showPosts() {
-    const posts = await ShowPost();
-    posts.forEach((post) => {
-      console.log(post.id, ' => ', post.data);
-    });
-  } */
 
   HomeDiv.appendChild(section3);
   // section2.appendChild(buttonReadRecipe);

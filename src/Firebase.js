@@ -79,10 +79,7 @@ export function crearPost(titulo, texto) {
   }
 }
 
-/* export const ShowPost = getDocs(collection(db, 'post'));
-ShowPost.forEach((doc) => {
-  return (doc.id, ' => ', doc.data());
-}); */
+// Mostrar Post
 export const ShowPost = async () => {
   const querySnapshot = await getDocs(collection(db, 'post'));
   const posts = [];
@@ -96,13 +93,18 @@ export const ShowPost = async () => {
   return posts;
 };
 
+// Borrar Post
 export const borrarDoc = (id) => deleteDoc(doc(db, 'post', id));
 
+// Editar Post
 export const editarPost = (id) => getDoc(doc(db, 'post', id));
 
+// Actializar Post
 export const actualizarPost = async (id, newFields) => {
   return updateDoc(doc(db, 'post', id), newFields);
   // eslint-disable-next-line no-unreachable
   console.log(id, newFields);
 };
+
+// OBTIENE LA COLECCION DE POSTS
 export const editarPosts = () => getDocs(collection(db, 'post'));
