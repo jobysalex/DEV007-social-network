@@ -64,8 +64,8 @@ export function obtenerCorreoUsuario() {
 }
 
 // Crear Post
-export function crearPost(titulo, texto) {
-  const email = obtenerCorreoUsuario();
+export function crearPost(titulo, texto, _) {
+  const email = _ ? _() : obtenerCorreoUsuario;
   if (email) {
     const docRef = addDoc(collection(db, 'post'), {
       title: titulo,
@@ -73,7 +73,7 @@ export function crearPost(titulo, texto) {
       user: email,
       like: [],
     });
-    console.log('Document written with ID: ', docRef.id);
+    console.log('Document written with ID: ', docRef);
   } else {
     console.log('No se puede obtener el correo electrónico del usuario.');
   }
