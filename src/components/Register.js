@@ -3,11 +3,13 @@ import {
 
 } from '../Firebase.js';
 
+import tarta from '../img/tarta.jpg';
+
 export const Register = (onNavigate) => {
   const HomeDiv = document.createElement('div');
 
   const viewRegister = `
-  <picture><img src = "./img/tarta.jpg" class = "imgMain" alt = "imgen de Tarta - Cocinemos Juntos "></picture>
+  <picture><img src="${tarta}" class = "imgMain" alt = "imgen de Tarta - Cocinemos Juntos "></picture>
   <section class = "container">
     <img class = "logo3" src = "./img/Logo3.png">
     <h2>Registrarse</h2>
