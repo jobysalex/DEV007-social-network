@@ -2,13 +2,13 @@
 
 import {
   createUserWithEmailAndPassword,
-  getAuth,
   signInWithEmailAndPassword,
   signInWithPopup,
   GoogleAuthProvider,
 }
   from 'firebase/auth';
 import {
+  addDoc,
   collection,
   deleteDoc,
   doc,
@@ -31,6 +31,8 @@ import {
 // import {
 //   clearErrorMessage,
 // } from '../src/components/Login.js';
+
+import * as firebaseFunctions from '../src/Firebase';
 
 describe('iniciarsesion', () => {
   it('Debería ser una función', () => {
@@ -124,12 +126,10 @@ it('Debería llamar a la función createUserWithEmailAndPassword cuando esta se 
 }); */
 
 it('Debería llamar a la función crearPost cuando esta se ejecuta', async () => {
-  getAuth.mockReturnValueOnce('test');
-  const response = await crearPost('titulo', 'texto');
-  expect(response).toEqual({
-    title: 'titulo',
-    post: 'texto',
-  });
+  jest.spyOn(firebaseFunctions, 'obtenerCorreoUsuario');
+  obtenerCorreoUsuario.mockReturnValueOnce('persona@mail.com');
+  await crearPost('titulo', 'texto', obtenerCorreoUsuario);
+  expect(addDoc).toHaveBeenCalled();
 });
 
 /* it('debería llamar a la función', async () => {
